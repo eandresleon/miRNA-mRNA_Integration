@@ -17,6 +17,7 @@ A detailed guide to analise and integrate small-RNASeq and RNASeq samples using 
          * [miRNA Analysis](#miRNA)
          * [Integration](#Integration)
        * [Results](#results)
+   * [Conclusions](#conclusions)
 
 ----------------------------
 # Overview
@@ -310,7 +311,7 @@ The **-l** | **--exon-length** option of the *eventGenerator* operation defines 
 ==============
 -------------------
 
-### **Integration**
+### **integration**
 
 
 
@@ -340,3 +341,4 @@ transcript3 <expression>  <expression>  <expression>  <expression>
 
 **Note:** these files have a header with only the sample names (1 less column)
 
+# Conclusions
