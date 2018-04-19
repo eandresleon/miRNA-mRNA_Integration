@@ -23,12 +23,16 @@ A detailed guide to analise and integrate small-RNASeq and RNASeq samples using 
 # Overview
 ----------------------------
 
-SUPPA is a flexible and powerful tool to study splicing at the transcript isoform or at the local alternative splicing event level, across multiple conditions, and at high speed and accuracy. SUPPA has various modular operations that can be run separately to:
+miARma-Seq, miRNA-Seq And RNA-Seq Multiprocess Analysis tool, is a comprehensive pipeline analysis suite designed for NGS transcriptomic analysis:
+- Perform a quality analysis from fastq files
+- Remove (and predict) adapter sequences over-represented in the samples
+- Aligns reads using different aligners: HISAT2, STAR, BWA, TopHat, Bowtie1 or Bowtie2
+- Identify mRNA, miRNA and circRNAs. Also De Novo miRNAs is offered
+- Differential expresion analysis among any type of conditions (edgeR and NOISeq)
+- Functional enrichment for RNASeq (Gene Ontology and KEGG)
+- miRNA-mRNA target prediction for RNASeq and/or small RNASeq
+- Data integration for miRNA and mRNA based on statistical correlation (Pearson or Spearman)
 
-- Generate transcript events and local alternative splicing (AS) events from an annotation
-- Quantify transcript and local AS event inclusion levels (PSIs) from multiple samples
-- Calculate differential splicing for AS events and differential transcript usage across multiple conditions with replicates
-- Cluster events and transcripts according to PSI values across conditions
 
 ![Slide1.jpg](https://bitbucket.org/repo/4gEBMd/images/3120745382-Slide1.jpg)
 
