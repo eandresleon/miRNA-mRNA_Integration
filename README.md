@@ -52,28 +52,17 @@ miARma has been mainly developed in Perl and R. Our tool has been designed to re
 - C compiler (gcc) [Included in Xcode]
 - [R](https://cran.r-project.org)
 - [Bioconductor](https://www.bioconductor.org/install/)
-- miARma-Seq. You can use the version included in this [repository](https://github.com/eandresleon/miRNA-mRNA_Integration/raw/master/src/soft/miARma-Seq.1.7.5.tar.gz) or find the latest version at the [installation webpage](http://miarmaseq.idoproteins.com/installation). Here you'll find docker containers, virtualbox images and source code. In this guide we will use the source code as it only implies to uncompress a file.
+- miARma-Seq. You can use the version included in this [repository](https://github.com/eandresleon/miRNA-mRNA_Integration/raw/master/src/soft/miARma-Seq.1.7.5.tar.gz) or find the latest version at the [installation webpage](http://miarmaseq.idoproteins.com/installation). There you'll find docker containers, virtualbox images and source code. In this guide we will use the source code as it only implies to uncompress a file.
 
-If necessary, to install python3 we recommend to download from the official site https://www.python.org/downloads/ the corresponding version for your OS.
-
-A installation using pip is available using the next command:
+So, to install miARma-Seq, please download the [source code](https://github.com/eandresleon/miRNA-mRNA_Integration/raw/master/src/soft/miARma-Seq.1.7.5.tar.gz) and uncompress it:
 
 ```
-pip install SUPPA==2.2.1 
+mkdir ~/bin/
+mv miARma-Seq.1.7.5.tar.gz ~/bin/
+cd ~/bin/
+tar -xzf miARma-Seq.1.7.5.tar.gz
 ```
-By default SUPPA is installed into the Python package library directory. The following command can be executed to obtain the directory location:
-
-```
-pip show SUPPA 
-```
-
-SUPPA is ready to use. Once downloaded, it can be used directly from the command line by specifying the absolute path to the SUPPA executable (suppa.py).
-
-Another option is via bioconda (thanks to Devon Ryan)
-
-```
-conda install -c bioconda suppa
-```
+In that way miARma will be installed inside the folder bin in your home directory.
 
 ----------------------------
 # files
