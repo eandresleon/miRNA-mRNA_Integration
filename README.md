@@ -45,7 +45,13 @@ You can get more information about miARma at its [webpage](https://miarmaseq.com
 # Installation
 ----------------------------
 
-SUPPA has been developed in Python 3.4. 
+miARma has been mainly developed in Perl and R. Our tool has been designed to reduce pre-rrequisites to minimun, so ir order to run a complete analysis, you just need:
+
+- If you are using an OSX computer, please install Xcode.
+- Java JDK runtime (javac)
+- C compiler (gcc) [Included in Xcode]
+- [R](https://cran.r-project.org)
+- [Bioconductor](https://www.bioconductor.org/install/)
 
 If necessary, to install python3 we recommend to download from the official site https://www.python.org/downloads/ the corresponding version for your OS.
 
