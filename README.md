@@ -33,7 +33,7 @@ miARma-Seq, miRNA-Seq And RNA-Seq Multiprocess Analysis tool, is a comprehensive
 - miRNA-mRNA target prediction for RNASeq and/or small RNASeq
 - Data integration for miRNA and mRNA based on statistical correlation (Pearson or Spearman)
 
-[miARma-Seq WebPage](https://miarmaseq.com "miARma's Homepage") [miARma-Seq Article](https://www.nature.com/articles/srep25749)
+You can get more information about miARma at its [webpage](https://miarmaseq.com "miARma's Homepage") or you can read the [miARma-Seq article](https://www.nature.com/articles/srep25749)
 
 
 ![Figure1.tiff](https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure1.tiff)
