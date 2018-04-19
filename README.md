@@ -34,7 +34,7 @@ miARma-Seq, miRNA-Seq And RNA-Seq Multiprocess Analysis tool, is a comprehensive
 - Data integration for miRNA and mRNA based on statistical correlation (Pearson or Spearman)
 
 
-![Slide1.jpg](https://bitbucket.org/repo/4gEBMd/images/3120745382-Slide1.jpg)
+![Figure1.tiff](https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure1.tiff)
 
  
 **Fig 1.** SUPPA generates the alternative splicing events from an input annotation file (GTF format). The method reads transcript and gene information solely from the "exon" lines in the GTF. It then generates the events and outputs an ioe file, which contains the for each event the transcripts that describe either form of the event. Specifically, it provides the transcripts that contribute to the numerator (one form of the event) and the denominator (both forms of the event) of the PSI calculation. For the generation of PSI values, SUPPA reads the ioe file generated in the previous step and a transcript expression file with the transcript abundances to calculate the PSI value for each of the events. 
