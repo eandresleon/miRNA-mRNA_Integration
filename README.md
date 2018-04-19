@@ -45,13 +45,14 @@ You can get more information about miARma at its [webpage](https://miarmaseq.com
 # Installation
 ----------------------------
 
-miARma has been mainly developed in Perl and R. Our tool has been designed to reduce pre-rrequisites to minimun, so ir order to run a complete analysis, you just need:
+miARma has been mainly developed in Perl and R. Our tool has been designed to reduce prerequisites to minimun so, im order to run a complete analysis, you just need:
 
 - If you are using an OSX computer, please install Xcode.
 - Java JDK runtime (javac)
 - C compiler (gcc) [Included in Xcode]
 - [R](https://cran.r-project.org)
 - [Bioconductor](https://www.bioconductor.org/install/)
+- miARma-Seq. You can use the version included in this [repository](https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/soft/miARma-Seq.1.7.5.tar.gz) or find the latest version at the [intallation webpage](http://miarmaseq.idoproteins.com/installation).
 
 If necessary, to install python3 we recommend to download from the official site https://www.python.org/downloads/ the corresponding version for your OS.
 
