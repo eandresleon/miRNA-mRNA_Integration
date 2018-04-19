@@ -33,11 +33,13 @@ miARma-Seq, miRNA-Seq And RNA-Seq Multiprocess Analysis tool, is a comprehensive
 - miRNA-mRNA target prediction for RNASeq and/or small RNASeq
 - Data integration for miRNA and mRNA based on statistical correlation (Pearson or Spearman)
 
+[miARma-Seq WebPage](https://miarmaseq.com "miARma's Homepage") [miARma-Seq Article](https://www.nature.com/articles/srep25749)
+
 
 ![Figure1.tiff](https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure1.tiff)
 
  
-**Fig 1.** SUPPA generates the alternative splicing events from an input annotation file (GTF format). The method reads transcript and gene information solely from the "exon" lines in the GTF. It then generates the events and outputs an ioe file, which contains the for each event the transcripts that describe either form of the event. Specifically, it provides the transcripts that contribute to the numerator (one form of the event) and the denominator (both forms of the event) of the PSI calculation. For the generation of PSI values, SUPPA reads the ioe file generated in the previous step and a transcript expression file with the transcript abundances to calculate the PSI value for each of the events. 
+**Fig 1.** miARma-Seq is presented as a stand-alone tool that provides different well-established softwares at ease of installation process. Our suite can analyse a large number of samples due to its multithread design. Here we show that the analyses of miRNA, mRNA and circRNAs against validated datasets can be easily accessible to research community.
 
 ----------------------------
 # Installation
