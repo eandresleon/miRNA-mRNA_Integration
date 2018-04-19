@@ -6,9 +6,9 @@ A detailed guide to analise and integrate small-RNASeq and RNASeq samples using 
 # Table of Contents
 ----------------------------
 
-   * [Overview](#overview)
-   * [miARma Installation](#installation)
-   * [Indexes and other needed files](#files)
+   * [Overview](#Overview)
+   * [miARma Installation](#Installation)
+   * [Indexes and other needed files](#Indexes and other needed files)
    * [A complete Analysis](#analisis)
        * [Summary of experiment](#summary)
        * [Data retrieval](#sra)
@@ -45,7 +45,7 @@ You can get more information about miARma at its [webpage](https://miarmaseq.com
 # Installation
 ----------------------------
 
-miARma has been mainly developed in Perl and R. Our tool has been designed to reduce prerequisites to minimun so, im order to run a complete analysis, you just need:
+miARma has been mainly developed in Perl and R. Our tool has been designed to reduce prerequisites to minimun so, in order to run a complete analysis, you just need:
 
 - If you are using an OSX computer, please install Xcode.
 - Java JDK runtime (javac)
@@ -65,7 +65,7 @@ tar -xzf miARma-Seq.1.7.5.tar.gz
 In that way miARma will be installed inside the folder bin in your home directory.
 
 ----------------------------
-# files
+# Indexes and other needed files
 ----------------------------
 
 SUPPA works with a command/subcommand structure:
