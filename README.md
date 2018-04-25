@@ -8,7 +8,7 @@ A detailed guide to analise and integrate small-RNASeq and RNASeq samples using 
 
    * [Overview](#Overview)
    * [miARma Installation](#Installation)
-   * [Indexes and other needed files](#Indexes and other needed files)
+   * [Indexes and other needed files](#Indexes_and_other_needed_files)
    * [A complete Analysis](#analisis)
        * [Summary of experiment](#summary)
        * [Data retrieval](#sra)
