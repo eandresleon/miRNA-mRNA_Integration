@@ -6,18 +6,18 @@ A detailed guide to analise and integrate small-RNASeq and RNASeq samples using 
 # Table of Contents
 ----------------------------
 
-   * [Overview](#Overview)
-   * [miARma Installation](#Installation)
-   * [Indexes and other needed files](#Indexes_and_other_needed_files)
-   * [A complete Analysis](#Analysis)
-       * [Summary of experiment](#Summary)
+   * [Overview](#overview)
+   * [miARma Installation](#installation)
+   * [Indexes and other needed files](#indexes_and_other_needed_files)
+   * [A complete Analysis](#analysis)
+       * [Summary of experiment](#summary)
        * [Data retrieval](#sra)
        * [Analysis](#study)
          * [mRNA Analysis](#mRNA)
          * [miRNA Analysis](#miRNA)
-         * [Integration](#Integration)
-       * [Results](#Results)
-   * [Conclusions](#Conclusions)
+         * [Integration](#integration)
+       * [Results](#results)
+   * [Conclusions](#conclusions)
 
 ----------------------------
 # Overview
