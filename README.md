@@ -9,15 +9,15 @@ A detailed guide to analise and integrate small-RNASeq and RNASeq samples using 
    * [Overview](#Overview)
    * [miARma Installation](#Installation)
    * [Indexes and other needed files](#Indexes_and_other_needed_files)
-   * [A complete Analysis](#analisis)
-       * [Summary of experiment](#summary)
+   * [A complete Analysis](#Analysis)
+       * [Summary of experiment](#Summary)
        * [Data retrieval](#sra)
        * [Analysis](#study)
          * [mRNA Analysis](#mRNA)
          * [miRNA Analysis](#miRNA)
          * [Integration](#Integration)
-       * [Results](#results)
-   * [Conclusions](#conclusions)
+       * [Results](#Results)
+   * [Conclusions](#Conclusions)
 
 ----------------------------
 # Overview
@@ -313,13 +313,13 @@ The **-l** | **--exon-length** option of the *eventGenerator* operation defines 
 ==============
 -------------------
 
-### **integration**
+### **Integration**
 
 
 
 SUPPA reads the ioi or ioe file generated in the previous step and a transcript expression file with the transcript abundances (TPM units) to calculate the relative abundance (PSI) value per sample for each transcript or each local event. 
 
-## results
+## Results
 
 An **ioi/ioe** file and a "**transcript expression file**" are required as input. 
 
