@@ -9,6 +9,8 @@ A detailed guide to analise and integrate small-RNASeq and RNASeq samples using 
    * [Overview](#overview)
    * [miARma Installation](#installation)
    * [Indexes and other needed files](#indexes_and_other_needed_files)
+       * [Genome Indexes](#genome_indexes)
+       * [Organism Anottation](#organism_anottation)
    * [A complete Analysis](#analysis)
        * [Summary of experiment](#summary)
        * [Data retrieval](#sra)
@@ -68,11 +70,14 @@ In that way miARma will be installed inside the folder bin in your home director
 # Indexes and other needed files
 ----------------------------
 
-SUPPA works with a command/subcommand structure:
+In order to analyse transcriptomic data, we need to download the following information.
+## Genome Indexes ##
+Sequenced reads must be aligned (placed) into the reference genome. As we will study human samples, miARma-Seq we will need to download human genome data. Besides we will use the [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner. As a result human HISAT2 indexes will be downloaded following these steps:
 
 ```
-python3.4 suppa.py subcommand options
-
+cd ~/bin/miARma-Seq.1.7.5
+curl -L -O https://sourceforge.net/projects/miarma/files/Genomes/Index_hisat2_hg19.tar.bz2
+tar -xjf Index_hisat2_hg19.tar.bz2
 ```
 where the subcommand can be one of these five:
 
