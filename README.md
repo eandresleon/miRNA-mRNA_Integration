@@ -143,11 +143,14 @@ Resistant and non-resistance to cetuximab colon cancer transcriptome samples of 
 <p align="center">
   <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure2.png">
 </p>
+**Fig 2.** Most overexpressed and repressed genes from resistant (CRC-CR) and non-resistance (CRC) cetuximab samples from colorectal cancer patients. A) Shows a volcano plot including the five most inhibited (OLFM1, SERP2, CRABP1, DKK1 and ZNF608) and overexpressed genes (MIR100HG, DUSP4, XAF1, BHLHE41 and HS3ST5) including log2FC and its FDR (-log10 FDR). B) Display the difference in expression level among CRC and CRC-RC samples from the two most differentially over-expressed genes: MIR100HG and BHLHE41. C) Exhibit the modification in expression level among CRC and CRC-RC samples from the two most differentially repressed genes: OLFM1 and SERP2.
+
 On the contrary, from the small RNA analysis, we have obtained seven up-regulated and 22 downregulated miRNAs (. According with the Figure 3a, the highest overexpressed miRNAs are miR-100-5p, miR-125b-1-3p, miR-125b-5p and let-7a-2-3p. At the same time, the most repressed miRNAs are miR-99a-5p, miR-34b-5p, miR-125b-2-3p and the tumour suppressors miR-1, miR-145-5p and miR-143-3p. Figures 3b and 3c represent the variation of expression of the two most over-expressed and repressed miRNAs among our results. 
 
 <p align="center">
   <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure3.png">
 </p>
+**Fig 3.** . Most overexpressed and repressed miRNAs from resistant (CRC-CR) and non-resistance (CRC) cetuximab samples from colorectal cancer patients. A) Shows a volcano plot including the five most over-expressed (miR-100-5p, miR-125b-1-3p, miR-125b-5p, let-7a-2-3p and miR-4286) and repressed miRNAs (miR-1, miR-99a-5p, miR-125b-2-3p, miR-145-5p and miR-143-3p) including log2FC and its FDR (-log10 FDR). B) Display the difference in expression level among CRC and CRC-RC samples from the two most differentially over-expressed miRNAs: miR-100-5p and miR-125b-1-3p. C) Exhibit the modification in expression level among CRC and CRC-RC samples from the two most differentially inhibited miRNAs: miR-1 and miR-125b-2-3p.
 
 Once the 29 miRNAs and the 368 differentially expressed genes were identified, miARma-Seq performs a statistical integration between these elements. Giving to the total possible number of 10672 correlations, 6287 were statically significant (p-value ≤ 0.05) according to the Pearson correlation method. Among the most overexpressed genes, the positive correlation that appears with several of the most overexpressed microRNAs stands out. 
 In this way, as shown in Table 1, we can see that MIR100HG (gene with extremely high fold change value) has an average positive R coefficient score higher than 0.97 and a p-value < 0.05 for the four most overexpressed microRNAs: miR-100-5p, let-7a-2-3p, miR-125b-5p and miR-125b-1-3p. The explanation of this event is simple since miR100HG is a long non-coding RNA that acts as a host cluster gene. In this way, this RNA functions as a policistron that encodes exactly for the four miRNAs (miR-100-5p, let-7a-2-3p, miR-125b-5p and miR-125b-1-3p) that are overexpressed.
@@ -159,6 +162,8 @@ Finally, to provide a final result as relevant as possible, miARma-Seq performs 
 <p align="center">
   <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure4.png">
 </p>
+**Fig 4.** Set of miRNA-mRNA predicted interactions for the five most overexpressed and repressed genes with those miRNAs differentially expressed having a negative correlation of expression (R Pearson's coefficient) ≥ -0.9 and p-value ≤ 0.05. 
+
 
 # Conclusions
 The integration of data from different sources helps to improve our knowledge about possible mechanisms that governs underlying relationships arising from the pathophysiology of diseases. These techniques allow the development of new strategies for the early detection and treatment of human diseases. An example of this is the recent article published by the consortium of the cancer genome atlas (TCGA) that has integrated the information of about 11 thousand samples from 33 types of tumours, using up to 4 ‘-omic’ technologies (exome sequencing, miRNA and mRNA transcriptome sequencing and DNA methylation). This combination of data has resulted in a molecular grouping of tumours unknown until now [85].
