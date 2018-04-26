@@ -42,9 +42,9 @@ You can get more information about miARma at its [webpage](https://miarmaseq.com
   <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure1.png">
 </p>
 
-<div class="align-justify">
+
 **Fig 1.** miARma-Seq is presented as a stand-alone tool that provides different well-established softwares at ease of installation process. Our suite can analyse a large number of samples due to its multithread design. Here we show that the analyses of miRNA, mRNA and circRNAs against validated datasets can be easily accessible to research community.
-</div>
+
 ----------------------------
 # Installation
 ----------------------------
@@ -110,7 +110,9 @@ So we are ready to perfom the complete study.
 ## Summary
 
 Briefly, the work by [Lu et al](https://www.nature.com/articles/nm.4424)  is focused on colorectal cancer (CRC), as it remains the leading cause of cancer-related death worldwide. Cetuximab and panitumumab are typical CRC treatments that bind the extracellular domain of the EGF receptor enhancing its internalization and degradation. When these are combined with chemotherapy, up to 72% response rates are reported. However, de novo and acquired drug resistance frequently arises, and little is known about non-genetic resistance mechanisms.
-In order to increase our knowledge about these mechanisms, CRC samples from colon adenocarcinoma cancer cell line HCA-7 were treated with cetuximab for approximately four months to induce resistance and deposited at the [NCBI Gene Expression Omnibus (GEO)](https://www.ncbi.nlm.nih.gov/geo/) repository with accession number: [GSE82236](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE82236):
+
+In order to increase our knowledge about these mechanisms, CRC samples from colon adenocarcinoma cancer cell line HCA-7 were treated with cetuximab for approximately four months to induce resistance and deposited at the [NCBI Gene Expression Omnibus (GEO)](https://www.ncbi.nlm.nih.gov/geo/) repository with accession number [GSE82236](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE82236):
+
 - mRNA samples. Three cetuximab-resistant and three non-resistant RNASeq colon cancer samples were downloaded from GEO and analysed using miARma-Seq. Sequenced reads were inspected using FastQC to identify sequencing errors such as bad quality reads or possible accumulation of adapter sequences. Subsequently, sequences were aligned using Hisat2 and those with a quality score above 25 were counted and summarized as expression values for each gene using the GENCODE version 26 annotation file. To obtain those genes with a different expression pattern amongst both types of samples, we use edgeR as it enables the calculation of differential expression values. Low expressed genes (those having a count per million (CPM) value smaller than 1) were removed for the analysis as recommended by Anders et al [64]. Finally, as it was done by Lu et al, genes having a |log2FC|≥1 and a FDR ≤0.01 were considered as differentially expressed. See Figure 2.
 - miRNA analysis. Correspondingly, three CRC-CR and three CRC miRNASeq colon cancer samples were obtained and studied. Single-end sequenced reads were inspected using FastQC. Once this process, reads were pre-processed using Minion to predict (as it was not facilitated by the authors) and to remove the accumulated adapter sequences detected in the previous step. Afterwards, trimmed reads with a size comprised between 18 and 35 nucleotides were aligned using Bowtie1 and quantified using FeatureCounts and the microRNA annotation file from miRBase version 20. Low expressed miRNAs (having a CPM value lower than 1) were removed and differentially expressed microRNAs were acquired using edgeR. As above, miRNAs having a |log2FC|≥1 and a FDR ≤0.01 were considered as differentially expressed. See Figure 3 for more detail.
 
@@ -283,4 +285,3 @@ transcript3 <expression>  <expression>  <expression>  <expression>
 **Note:** these files have a header with only the sample names (1 less column)
 
 # Conclusions
-</div>
