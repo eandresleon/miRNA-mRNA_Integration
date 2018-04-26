@@ -1,4 +1,4 @@
-<div class="align-justify">
+
 # miRNA-mRNA_Integration
 A detailed guide to analise and integrate small-RNASeq and RNASeq samples using [miARma-Seq](https://miarmaseq.com "miARma's Homepage") focus on differentially expresed genes and miRNAs + miRNA-mRNA interactions and a statistical correlation.
 
@@ -42,9 +42,9 @@ You can get more information about miARma at its [webpage](https://miarmaseq.com
   <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure1.png">
 </p>
 
-
+<div class="align-justify">
 **Fig 1.** miARma-Seq is presented as a stand-alone tool that provides different well-established softwares at ease of installation process. Our suite can analyse a large number of samples due to its multithread design. Here we show that the analyses of miRNA, mRNA and circRNAs against validated datasets can be easily accessible to research community.
-
+</div>
 ----------------------------
 # Installation
 ----------------------------
