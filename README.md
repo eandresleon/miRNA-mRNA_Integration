@@ -91,6 +91,14 @@ To perfom this step, miARma-Seq needs to know the position of each genomic featu
 These files can be obtained from this git-hub repository:
 
 ```
+cd ~/bin/miARma-Seq.1.7.5
+mkdir data
+cd data
+
+curl -L -O https://github.com/eandresleon/miRNA-mRNA_Integration/raw/master/src/data/gencode.v26_GRCh37.annotation.gtf.gz
+gunzip gencode.v26_GRCh37.annotation.gtf.gz
+
+curl -L -O https://raw.githubusercontent.com/eandresleon/miRNA-mRNA_Integration/master/src/data/miRBase_Annotation_20_for_hsa_mature_miRNA.gtf
 
 ```
 
