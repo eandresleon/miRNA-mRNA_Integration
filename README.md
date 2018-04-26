@@ -146,6 +146,7 @@ Resistant and non-resistance to cetuximab colon cancer transcriptome samples of 
 </p>
 
 **Fig 2.** Most overexpressed and repressed genes from resistant (CRC-CR) and non-resistance (CRC) cetuximab samples from colorectal cancer patients. A) Shows a volcano plot including the five most inhibited (OLFM1, SERP2, CRABP1, DKK1 and ZNF608) and overexpressed genes (MIR100HG, DUSP4, XAF1, BHLHE41 and HS3ST5) including log2FC and its FDR (-log10 FDR). B) Display the difference in expression level among CRC and CRC-RC samples from the two most differentially over-expressed genes: MIR100HG and BHLHE41. C) Exhibit the modification in expression level among CRC and CRC-RC samples from the two most differentially repressed genes: OLFM1 and SERP2.
+
 -------
 
 On the contrary, from the small RNA analysis, we have obtained seven up-regulated and 22 downregulated miRNAs (. According with the Figure 3a, the highest overexpressed miRNAs are miR-100-5p, miR-125b-1-3p, miR-125b-5p and let-7a-2-3p. At the same time, the most repressed miRNAs are miR-99a-5p, miR-34b-5p, miR-125b-2-3p and the tumour suppressors miR-1, miR-145-5p and miR-143-3p. Figures 3b and 3c represent the variation of expression of the two most over-expressed and repressed miRNAs among our results. 
@@ -156,6 +157,7 @@ On the contrary, from the small RNA analysis, we have obtained seven up-regulate
 </p>
 
 **Fig 3.** . Most overexpressed and repressed miRNAs from resistant (CRC-CR) and non-resistance (CRC) cetuximab samples from colorectal cancer patients. A) Shows a volcano plot including the five most over-expressed (miR-100-5p, miR-125b-1-3p, miR-125b-5p, let-7a-2-3p and miR-4286) and repressed miRNAs (miR-1, miR-99a-5p, miR-125b-2-3p, miR-145-5p and miR-143-3p) including log2FC and its FDR (-log10 FDR). B) Display the difference in expression level among CRC and CRC-RC samples from the two most differentially over-expressed miRNAs: miR-100-5p and miR-125b-1-3p. C) Exhibit the modification in expression level among CRC and CRC-RC samples from the two most differentially inhibited miRNAs: miR-1 and miR-125b-2-3p.
+
 -------
 
 Once the 29 miRNAs and the 368 differentially expressed genes were identified, miARma-Seq performs a statistical integration between these elements. Giving to the total possible number of 10672 correlations, 6287 were statically significant (p-value ≤ 0.05) according to the Pearson correlation method. Among the most overexpressed genes, the positive correlation that appears with several of the most overexpressed microRNAs stands out. 
@@ -171,6 +173,7 @@ Finally, to provide a final result as relevant as possible, miARma-Seq performs 
 </p>
 
 **Fig 4.** Set of miRNA-mRNA predicted interactions for the five most overexpressed and repressed genes with those miRNAs differentially expressed having a negative correlation of expression (R Pearson's coefficient) ≥ -0.9 and p-value ≤ 0.05. 
+
 -------
 
 # Conclusions
