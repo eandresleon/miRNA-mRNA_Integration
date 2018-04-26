@@ -111,7 +111,7 @@ So we are ready to perfom the complete study.
 
 Briefly, the work by [Lu et al](https://www.nature.com/articles/nm.4424)  is focused on colorectal cancer (CRC), as it remains the leading cause of cancer-related death worldwide. Cetuximab and panitumumab are typical CRC treatments that bind the extracellular domain of the EGF receptor enhancing its internalization and degradation. When these are combined with chemotherapy, up to 72% response rates are reported. However, de novo and acquired drug resistance frequently arises, and little is known about non-genetic resistance mechanisms.
 
-In order to increase our knowledge about these mechanisms, CRC samples from colon adenocarcinoma cancer cell line HCA-7 were treated with cetuximab for approximately four months to induce resistance and deposited at the [NCBI Gene Expression Omnibus (GEO)](https://www.ncbi.nlm.nih.gov/geo/) repository with accession number [GSE82236](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE82236.
+In order to increase our knowledge about these mechanisms, CRC samples from colon adenocarcinoma cancer cell line HCA-7 were treated with cetuximab for approximately four months to induce resistance and deposited at the [NCBI Gene Expression Omnibus (GEO) ](https://www.ncbi.nlm.nih.gov/geo/) repository with accession number [GSE82236](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE82236.
 
 ## Data retrieval
 
