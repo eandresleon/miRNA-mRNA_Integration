@@ -12,10 +12,10 @@ A detailed guide to analise and integrate small-RNASeq and RNASeq samples using 
    * [Indexes and other needed files](#indexes_and_other_needed_files)
        * [Genome Indexes](#genome_indexes)
        * [Organism Anottation](#organism_anottation)
-   * [A complete Analysis](#analysis)
+   * [A complete Analysis](#complete_analysis)
        * [Summary of experiment](#summary)
        * [Data retrieval](#data_retrieval)
-       * [Analysis](#study)
+       * [Analysis](#analysis)
          * [mRNA Analysis](#mRNA)
          * [miRNA Analysis](#miRNA)
          * [Integration](#integration)
@@ -102,7 +102,7 @@ gunzip gencode.v26_GRCh37.annotation.gtf.gz
 curl -L -O https://raw.githubusercontent.com/eandresleon/miRNA-mRNA_Integration/master/src/data/miRBase_Annotation_20_for_hsa_mature_miRNA.gtf
 ```
 
-## Analysis
+## Complete Analysis
 
 At this moment, we have already downloaded all needed software to perform a complete anaylysis. Besides we have obtained the human genome, its HISAT indexes and all human gene and miRNA anottation.
 So we are ready to perfom the complete study.
@@ -117,7 +117,7 @@ In order to increase our knowledge about these mechanisms, CRC samples from colo
 
 
 
-## study
+## Complete Analysis
 
 For transcripts, the *generateEvents* operation outputs one single file: An *ioi* file that shows the transcript "events" in each gene. This is a tab separated file with the following fields
 ### **mRNA**
