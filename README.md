@@ -99,73 +99,18 @@ curl -L -O https://github.com/eandresleon/miRNA-mRNA_Integration/raw/master/src/
 gunzip gencode.v26_GRCh37.annotation.gtf.gz
 
 curl -L -O https://raw.githubusercontent.com/eandresleon/miRNA-mRNA_Integration/master/src/data/miRBase_Annotation_20_for_hsa_mature_miRNA.gtf
-
 ```
 
 ## Analysis
 
-An annotation file in GTF format is required (see e.g. http://mblab.wustl.edu/GTF22.html):
-
-```
-chr14 Ensembl exon  73741918  73744001  0.0 - . gene_id "ENSG00000000001"; transcript_id "ENST00000000001.1"; 
-chr14 Ensembl exon  73749067  73749213  0.0 - . gene_id "ENSG00000000001"; transcript_id "ENST00000000001.1";  
-chr14 Ensembl exon  73750789  73751082  0.0 - . gene_id "ENSG00000000001"; transcript_id "ENST00000000001.1"; 
-chr14 Ensembl exon  73753818  73754022  0.0 - . gene_id "ENSG00000000001"; transcript_id "ENST00000000001.1"; 
-
-```
-
-The *generateEvents* operation uses the lines where the feature (column 3) is "exon". It then reads the different transcripts and genes. For that purpose "gene_id" and "transcript_id" tags are required in the attributes field (column 9). For local AS events, this command also generates a GTF file with the calculated events and with a track header ready to be uploaded into the UCSC browser for visualization (see below). 
+At this moment, we have already downloaded all needed software to perform a complete anaylysis. Besides we have obtained the human genome, its HISAT indexes and all human gene and miRNA anottation.
+So we are ready to perfom the complete study.
 
 ## Summary
 
-To generate the events from the GTF file one has to run the following command:
+Briefly, the work by [Lu et al](https://www.nature.com/articles/nm.4424)  is focused on colorectal cancer (CRC), as it remains the leading cause of cancer-related death worldwide. Cetuximab and panitumumab are typical CRC treatments that bind the extracellular domain of the EGF receptor enhancing its internalization and degradation. When these are combined with chemotherapy, up to 72% response rates are reported. However, de novo and acquired drug resistance frequently arises, and little is known about non-genetic resistance mechanisms.
+In order to increase our knowledge about these mechanisms, CRC samples from colon adenocarcinoma cancer cell line HCA-7 were treated with cetuximab for approximately four months to induce resistance. Three replicates of CRC samples and three replicates of CRC-cetuximab resistant (CRC-RC) were sequenced according to a RNASeq and to a small-RNASeq protocol, and deposited at the NCBI Gene Expression Omnibus (GEO) repository with accession number: GSE82236.
 
-```
-python3.4 suppa.py generateEvents [options]
-```
-List of options available:
-
-- **-i**  | **--input-file**: a GTF format file containing at least "exon" lines
-
-- **-o**  | **--output-file**: name of the output file without any extension
-
-- **-f**  | **--format**: [ioe,ioi]
-  	  - Required. Format of the event annotation file: ioe for local events, ioi for transcript events.
-
-- **-p**  | **--pool-genes**: 
-  	  - Optional. Redefine genes by clustering together transcripts by genomic stranded overlap and sharing at least one exon.
-            It is crucial when creating ioe/ioi from annotations that are not loci-based, e.g.: RefSeq and UCSC genes.
-
-- **-e**  | **--event-type**: (only used for local AS events) space separated list of events to generate from the following list:
-
-  - **SE**: Skipping exon (SE)
-  - **SS**: Alternative 5' (A5) or 3' (A3) splice sites (generates both)
-  - **MX**: Mutually Exclusive (MX) exons
-  - **RI**: Retained intron (RI)
-  - **FL**: Alternative First (AF) and Last (AL) exons (generates both)
-
-- **-b** | **--boundary**: [S,V]
-        - Boundary type (only used for local AS events). Options: S -- Strict (Default) V -- Variable
-
-- **-t** | **--threshold**: THRESHOLD
-        - Variability treshold (Default: 10nt. Only used forlocal AS events). In case of strict boundaries this argument is ignored
-
-- **-l**  | **--exon-length**: (only used for local AS events). Defines the number of nucleotides to display in the output GTF. (Default: 100 nt)
-
-- **-h**  | **--help**: display the help message describing the different paramenters
-
-
-The command line to generate local AS events will be of the form:
-
-```
-python3.4 suppa.py generateEvents -i <input-file.gtf> -o <output-file> -f ioe -e <list-of-events>
-```
-
-The command to generate the transcript "events" would be of the form:
-
-```
-python3.4 suppa.py generateEvents -i <input-file.gtf> -o <output-file> -f ioi 
-```
 
 ## sra
 
