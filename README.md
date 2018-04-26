@@ -14,7 +14,7 @@ A detailed guide to analise and integrate small-RNASeq and RNASeq samples using 
        * [Organism Anottation](#organism_anottation)
    * [A complete Analysis](#analysis)
        * [Summary of experiment](#summary)
-       * [Data retrieval](#sra)
+       * [Data retrieval](#data_retrieval)
        * [Analysis](#study)
          * [mRNA Analysis](#mRNA)
          * [miRNA Analysis](#miRNA)
@@ -66,7 +66,7 @@ mv miARma-Seq.1.7.5.tar.gz ~/bin/
 cd ~/bin/
 tar -xzf miARma-Seq.1.7.5.tar.gz
 ```
-In that way miARma will be installed inside the folder bin in your home directory.
+In that way miARma will be installed inside the folder bin in your home directory. Finally to perform this example you will need the [sra toolkit](https://www.ncbi.nlm.nih.gov/sra/docs/toolkitsoft/), as fastq samples are provided as sra files.
 
 ----------------------------
 # Indexes and other needed files
@@ -111,177 +111,42 @@ So we are ready to perfom the complete study.
 
 Briefly, the work by [Lu et al](https://www.nature.com/articles/nm.4424)  is focused on colorectal cancer (CRC), as it remains the leading cause of cancer-related death worldwide. Cetuximab and panitumumab are typical CRC treatments that bind the extracellular domain of the EGF receptor enhancing its internalization and degradation. When these are combined with chemotherapy, up to 72% response rates are reported. However, de novo and acquired drug resistance frequently arises, and little is known about non-genetic resistance mechanisms.
 
-In order to increase our knowledge about these mechanisms, CRC samples from colon adenocarcinoma cancer cell line HCA-7 were treated with cetuximab for approximately four months to induce resistance and deposited at the [NCBI Gene Expression Omnibus (GEO)](https://www.ncbi.nlm.nih.gov/geo/) repository with accession number [GSE82236](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE82236):
+In order to increase our knowledge about these mechanisms, CRC samples from colon adenocarcinoma cancer cell line HCA-7 were treated with cetuximab for approximately four months to induce resistance and deposited at the [NCBI Gene Expression Omnibus (GEO)](https://www.ncbi.nlm.nih.gov/geo/) repository with accession number [GSE82236](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE82236.
 
-- mRNA samples. Three cetuximab-resistant and three non-resistant RNASeq colon cancer samples were downloaded from GEO and analysed using miARma-Seq. Sequenced reads were inspected using FastQC to identify sequencing errors such as bad quality reads or possible accumulation of adapter sequences. Subsequently, sequences were aligned using Hisat2 and those with a quality score above 25 were counted and summarized as expression values for each gene using the GENCODE version 26 annotation file. To obtain those genes with a different expression pattern amongst both types of samples, we use edgeR as it enables the calculation of differential expression values. Low expressed genes (those having a count per million (CPM) value smaller than 1) were removed for the analysis as recommended by Anders et al [64]. Finally, as it was done by Lu et al, genes having a |log2FC|≥1 and a FDR ≤0.01 were considered as differentially expressed. See Figure 2.
-- miRNA analysis. Correspondingly, three CRC-CR and three CRC miRNASeq colon cancer samples were obtained and studied. Single-end sequenced reads were inspected using FastQC. Once this process, reads were pre-processed using Minion to predict (as it was not facilitated by the authors) and to remove the accumulated adapter sequences detected in the previous step. Afterwards, trimmed reads with a size comprised between 18 and 35 nucleotides were aligned using Bowtie1 and quantified using FeatureCounts and the microRNA annotation file from miRBase version 20. Low expressed miRNAs (having a CPM value lower than 1) were removed and differentially expressed microRNAs were acquired using edgeR. As above, miRNAs having a |log2FC|≥1 and a FDR ≤0.01 were considered as differentially expressed. See Figure 3 for more detail.
+## Data retrieval
 
 
-## sra
-
-For transcripts, the *generateEvents* operation outputs one single file: An *ioi* file that shows the transcript "events" in each gene. This is a tab separated file with the following fields
 
 ## study
 
 For transcripts, the *generateEvents* operation outputs one single file: An *ioi* file that shows the transcript "events" in each gene. This is a tab separated file with the following fields
 ### **mRNA**
 -------
-
-1. **seqname**: field 1 from the input GTF file of the generateEvents operation (generally the chromosome name)
-
-2. **gene_id**: ID of the gene where the event appears taken from the GTF file. (comma separated list in case of using the --pool-genes option)
-
-3. **event_id**: ID of the event, formatted as **gene_id**;**transcript_id**
-
-4. **transcript_id**: ID of the transcript that defines the event, for which the relative inclusion (PSI) is calculated.
-
-5. **Total transcripts**: IDs of the all transcripts in the gene (including the transcript in 4.) 
-
-Note that we call a transcript "event", a transcript in a gene. 
-
-
-An example of an *ioi* file is the following one:
-```
-seqname	gene_id	event_id	inclusion_transcripts	total_transcripts
-chr14   ENSG00000133961.15      ENSG00000133961.15;ENST00000556772.1    ENST00000556772.1       ENST00000554546.1,ENST00000356296.4,ENST00000557597.1,ENST00000555238.1,ENST00000556772.1,ENST00000355058.3,ENST00000359560.3,ENST00000555394.1,ENST00000454166.4,ENST00000544991.3,ENST00000560335.1,ENST00000559312.1,ENST00000554521.2,ENST00000555738.2,ENST00000535282.1,ENST00000554014.2,ENST00000553997.1,ENST00000557486.1,ENST00000555859.1,ENST00000555307.1,ENST00000554394.1,ENST00000554315.1,ENST00000556989.1,ENST00000555987.1,ENST00000556112.1,ENST00000557774.1,ENST00000554818.1,ENST00000557031.1,ENST00000556700.1,ENST00000556600.1,ENST00000553415.1,ENST00000557577.1,ENST00000557581.1
-chr14   ENSG00000133961.15      ENSG00000133961.15;ENST00000554818.1    ENST00000554818.1       ENST00000554546.1,ENST00000356296.4,ENST00000557597.1,ENST00000555238.1,ENST00000556772.1,ENST00000355058.3,ENST00000359560.3,ENST00000555394.1,ENST00000454166.4,ENST00000544991.3,ENST00000560335.1,ENST00000559312.1,ENST00000554521.2,ENST00000555738.2,ENST00000535282.1,ENST00000554014.2,ENST00000553997.1,ENST00000557486.1,ENST00000555859.1,ENST00000555307.1,ENST00000554394.1,ENST00000554315.1,ENST00000556989.1,ENST00000555987.1,ENST00000556112.1,ENST00000557774.1,ENST00000554818.1,ENST00000557031.1,ENST00000556700.1,ENST00000556600.1,ENST00000553415.1,ENST00000557577.1,ENST00000557581.1
-chr14   ENSG00000133961.15      ENSG00000133961.15;ENST00000556600.1    ENST00000556600.1       ENST00000554546.1,ENST00000356296.4,ENST00000557597.1,ENST00000555238.1,ENST00000556772.1,ENST00000355058.3,ENST00000359560.3,ENST00000555394.1,ENST00000454166.4,ENST00000544991.3,ENST00000560335.1,ENST00000559312.1,ENST00000554521.2,ENST00000555738.2,ENST00000535282.1,ENST00000554014.2,ENST00000553997.1,ENST00000557486.1,ENST00000555859.1,ENST00000555307.1,ENST00000554394.1,ENST00000554315.1,ENST00000556989.1,ENST00000555987.1,ENST00000556112.1,ENST00000557774.1,ENST00000554818.1,ENST00000557031.1,ENST00000556700.1,ENST00000556600.1,ENST00000553415.1,ENST00000557577.1,ENST00000557581.1
-chr14   ENSG00000133961.15      ENSG00000133961.15;ENST00000557774.1    ENST00000557774.1       ENST00000554546.1,ENST00000356296.4,ENST00000557597.1,ENST00000555238.1,ENST00000556772.1,ENST00000355058.3,ENST00000359560.3,ENST00000555394.1,ENST00000454166.4,ENST00000544991.3,ENST00000560335.1,ENST00000559312.1,ENST00000554521.2,ENST00000555738.2,ENST00000535282.1,ENST00000554014.2,ENST00000553997.1,ENST00000557486.1,ENST00000555859.1,ENST00000555307.1,ENST00000554394.1,ENST00000554315.1,ENST00000556989.1,ENST00000555987.1,ENST00000556112.1,ENST00000557774.1,ENST00000554818.1,ENST00000557031.1,ENST00000556700.1,ENST00000556600.1,ENST00000553415.1,ENST00000557577.1,ENST00000557581.1
-```
-
-
-
-For local AS events, the *generateEvents* operation outputs two files:
-
-1. An *ioe* file that shows the relationship between each event and the transcripts that define that particular event.
-
-2. A *GTF* file (with a track header) to load into the [UCSC genome browser](http://genome-euro.ucsc.edu/cgi-bin/hgGateway?redirect=auto&source=genome.ucsc.edu) to visualize the different local AS events.
-
-The name of the output is generated as follows:
-
-**&lt;output-file&gt;**.**&lt;event-type&gt;**.ioe/gtf
-    
-**&lt;output-file&gt;**: -o option specified when launching the program.
-
-**&lt;event_type&gt;**: a two letter code referring to the event type (SE, A3, A5, MX, RI, AF, AL).
-
-
-The ioe file has the following fields:
+Three cetuximab-resistant and three non-resistant colon cancer samples were downloaded from GEO and inspected using FastQC to identify sequencing errors such as bad quality reads or possible accumulation of adapter sequences. Subsequently, sequences were aligned using Hisat2 and those with a quality score above 25 were counted and summarized as expression values for each gene using the GENCODE version 26 annotation file. To obtain those genes with a different expression pattern amongst both types of samples, we use edgeR as it enables the calculation of differential expression values. As it was done by Lu et al, genes having a |log2FC|≥1 and a FDR ≤0.01 were considered as differentially expressed. See Figure 2.
 
 ### **miRNA**
 -------
 
-
-1. **seqname**: field 1 from the input GTF file of the generateEvents operation (generally the chromosome name)
-
-2. **gene_id**: ID of the gene where the event appears. (comma separated list in case of using the --pool-genes option)
-
-3. **event_id**: ID of the event.
-
-4. **Inclusion transcripts**: IDs of the transcripts that define the form of the event for which we calculate the PSI (e.g. exon inclusion) and contribute to the numerator of the PSI formula. For more details see Figures above. 
-
-5. **Total transcripts**: IDs of the all transcripts that define either of the two forms of the event (e.g. inclusion and skipping) and contribute to the denominator of the PSI formula. For more details see Figures above.
-
-
-**Event ID:** The event_id is formatted as follows:
-```
-<gene_id>;<event-type>:<seqname>:<coordinates-of-the-event>:<strand>
-```
-where:
-
-- &lt;gene_id&gt;: is the gene where the event takes place
-- &lt;event-type&gt;: correspond to the two letter code of the event from the following list.
-  - **SE**: Skipping Exon
-  - **A5**: Alternative 5' Splice Site
-  - **A3**: Alternative 3' Splice Site
-  - **MX**: Mutually Exclusive Exon
-  - **RI**: Retained Intron
-  - **AF**: Alternative First Exon
-  - **AL**: Alternative Last Exon  
-- &lt;seqname&gt;: coordinate reference system (e.g. chr1) 
-- &lt;coordinates-of-the-event&gt;: the coordinates of the event depends on the type of event (see above)
-- &lt;strand&gt;: either '+' or '-'
-
-
-**Inclusion transcripts**: The IDs must be the same as those provided in the expression (TPM) files. These transcripts define the inclusion form of the event. This form is chosen according to the convention described above in Figures 3 and 4: 
-
-- **SE**: transcripts including the middle exon
-- **A5/A3**: transcripts minimizing the intron length
-- **MX**: transcripts containing the alternative exon with the smallest (left most) start coordinate.
-- **RI**: transcripts that have the retain intron
-- **AF/AL**: transcripts maximizing the intron length
-
-**Total transcripts**: The IDs must be the same as those provided in the expression (TPM) files. Total transcripts are the transcripts that define both forms of the event and therefore contribute to the denominator of the PSI formula. 
-
-An example of an *ioe* file is the following one:
-```
-seqname	gene_id	event_id	inclusion_transcripts	total_transcripts
-chr14	ENSG00000133961.15	ENSG00000133961.15;SE:chr14:73763993-73789838:73789937-73822334:-	ENST00000556112.1    ENST00000556112.1,ENST00000555859.1
-chr14	ENSG00000133961.15	ENSG00000133961.15;SE:chr14:73876776-73925740:73926011-73929235:-	ENST00000553415.1    ENST00000553415.1,ENST00000556700.1
-chr14	ENSG00000133961.15	ENSG00000133961.15;SE:chr14:73744001-73745989:73746132-73749067:-	ENST00000557597.1,ENST00000555238.1,ENST00000556772.1,ENST00000359560.3,ENST00000355058.3,ENST00000535282.1   ENST00000557597.1,ENST00000555238.1,ENST00000556772.1,ENST00000359560.3,ENST00000355058.3,ENST00000535282.1,ENST00000554546.1,ENST00000356296.4,ENST00000555394.1,ENST00000454166.4,ENST00000560335.1,ENST00000555738.2,ENST00000554014.2
-chr14	ENSG00000133961.15	ENSG00000133961.15;SE:chr14:73749213-73750789:73751082-73753818:-	ENST00000554546.1,ENST00000356296.4,ENST00000557597.1,ENST00000555238.1,ENST00000556772.1,ENST00000359560.3,ENST00000355058.3,ENST00000555394.1,ENST00000535282.1,ENST00000553997.1,ENST00000557486.1    ENST00000554546.1,ENST00000356296.4,ENST00000557597.1,ENST00000555238.1,ENST00000556772.1,ENST00000359560.3,ENST00000355058.3,ENST00000555394.1,ENST00000535282.1,ENST00000553997.1,ENST00000557486.1,ENST00000454166.4,ENST00000560335.1,ENST00000555738.2
-
-```
-
-
-**Important: --pool-genes**
--------
-
-
-This option is important when creating ioe/ioi from annotations that are not loci-based, e.g.: RefSeq and UCSC genes.
-Unlike Ensembl or Gencode, which annotate gene loci, i.e. a set of transcripts will be uniquely be related to a gene at a locus, other annotations, like UCSC and Refseq 
-dowloaded from UCSC, do not have this unequivocal link of transcripts to a genomic locus. 
-
-We thus re-cluster transcripts according to their overlap in genomic extent on the same strand, and according to them sharing 
-at least one splice-site position in the genome. This method borrows from the (pre-Gencode) Ensembl function to create
-genes from transcripts (see Curwen et al. 2004 https://www.ncbi.nlm.nih.gov/pubmed/15123590). If transcripts are not appropriately clustered, 
-transcript relative abundances or event inclusion levels may not make sense.
-
-Using the **--pool-genes** option is also advisable to use with Ensembl and Gencode. The annotation contains genes with overlapping transcripts
-that share a great deal of sequence, hence their relative contribution to alternative splicing events should be taken into account. 
-
-
-**GTF for local events**
--------
-
-This output file is aimed for visualization and it is a regular *gtf* in half-open coordinate convention with a track header to be directly uploaded in UCSC. In this file, each of the two possible forms of an event is described as a separated *transcript_id*. Moreover, the *gene_id* is defined as the event_id. Note that SUPPA generally operates with closed coordinates.
-
-The **-l** | **--exon-length** option of the *eventGenerator* operation defines the length used to display the constitutive exons in the GTF file and it is used only for visualization purposes. For instance, in a *Skipping exon* event the flanking exons will be shown with a length given by this parameter.
-
-
--------------------
-**PSI calculation for Transcripts and Events**
-==============
--------------------
+Correspondingly, three CRC-CR and three CRC miRNASeq colon cancer samples were obtained and studied. Single-end sequenced reads were inspected using FastQC. Once this process, reads were pre-processed using Minion to predict (as it was not facilitated by the authors) and to remove the accumulated adapter sequences detected in the previous step. Afterwards, trimmed reads with a size comprised between 18 and 35 nucleotides were aligned using Bowtie1 and quantified using FeatureCounts and the microRNA annotation file from miRBase version 20. miRNAs having a |log2FC|≥1 and a FDR ≤0.01 were considered as differentially expressed. See Figure 3 for more detail.
 
 ### **Integration**
 
+miARma-seq enables to explore miRNA-mRNA interactions using the miRGate query API [34] among genes and miRNAs differentially expressed to identify alterations in regulation patterns linked to phenotype. On the contrary, to include in the analysis all expressed genes and miRNAs, a threshold FDR value equal to 1 can be specified. All those interactions deposited in miRGate and constituted by miRNAs and genes of interest, are retrieved and stored in a file for later analysis. In addition, a statistical correlation study is carried out for the subsequent integration of data. In this way, the correlation (Pearson or Spearman are available) between the expression values ​​of the deregulated genes and the miRNAs is calculated. 
+As a final result, we obtain a curated dataset that contains differentially expressed genes and miRNAs with a predicted miRNA-mRNA regulatory interaction and, in addition, formed by two elements that undergo a change of expression level which exhibits an elevated statistical correlation.
 
-
-SUPPA reads the ioi or ioe file generated in the previous step and a transcript expression file with the transcript abundances (TPM units) to calculate the relative abundance (PSI) value per sample for each transcript or each local event. 
 
 ## Results
 
-An **ioi/ioe** file and a "**transcript expression file**" are required as input. 
+Resistant and non-resistance to cetuximab colon cancer samples from the work published by Liu et al [62] were analysed by miARma-Seq to identify novel non-genetics mechanisms related to the acquired resistance to this drug that makes hard to treat patients diagnosed with this cancer type. 
+To carry out this study, transcriptome samples of both genes and miRNAs were analysed and a total of 368 genes and 29 miRNAs with statistically significant expression alteration were identified. Our results show 165 up-regulated and 203 downregulated genes (|log2FC|≥1 and FDR ≤0.01). These numbers are very similar to those described in the original article. In Figure 2a we show the five genes that exhibit the lowest (OLFM1, SERP2, CRABP1, DKK1 and ZNF608) and the five genes presenting the greater fold changes values (MIR100HG, DUSP4, XAF1, BHLHE41 and HS3ST5) while having minimum FDR scores. Figures 2b and 2c illustrate in detail the change of expression of the two most over-expressed and inhibited genes in our dataset. 
+Thereby, Olfatomedin 1 (OLFM1) is a member of the olfactomedin domain-containing protein family, which plays an important role in the development of neurogenic tissues. It has been related with several diseases [65, 66] and accordingly to our results, it has been described that the repression of its expression is related with a poor prognosis in colon cancer [67]. In that sense, it exists a patent for the study of OLFM1 expression level as a biomarker of prognosis in colon cancer (ID: CN105779635A). In the same way, the stress-associated endoplasmic reticulum protein family member 2 (SERP2) protein has been identified as a prognostic indicator in colon cancer [68]. CRABP1 (Cellular retinoic acid-binding protein 1) plays an important role in differentiation and proliferation mediated by retinoic-acid and it has been associated to the malignancy of mesenchymal and neuroendocrine tumours [69] and it has been found to be commonly downregulated in colon cancer [70]. Similarly, high DKK1 expression, known to be a potent inhibitor of the Wnt pathway, has been negatively correlated with the progression of colon cancer [71]. However, to our knowledge, no relationship among ZNF608 and colon cancer has been found, although this zinc finger protein has been associated to liver and pancreatic cancer [72] and also with the resistance to cisplatin treatment in ovarian cancer [73].
+The overexpression of MIR100HG, DUSP4, XAF1, BHLHE41 and HS3ST5 seems to be behind the initiation of numerous diseases and the development and poor prognosis in colon cancer. As an example, the miRNA host gene MIR100HG has been linked with metastasis in this type of tumour [74]. DUSP4 (also known as mitogen-activated protein kinase phosphatase-2) is responsible of the microsatellite instability in colorectal cancer and causes increased cell proliferation [75]. Analogously, the XIAP-associated factor 1 (XAF1) which mediates apoptosis through an extracellular signal-regulated kinase pathway has been found deregulated in colon cancer cells [76]. In tumour cells, BHLHE41 shows a circadian expression and inhibits EMT, apoptosis, and metastasis in sarcoma cells and hepatocellular carcinoma cells [77]. It has been shown that the normal tissue adjacent to colon carcinomas show high levels of BHLHE41 expression [78]. Heparan sulfate (HS) proteoglycans, such as HS3ST5, are key components of cell microenvironment and fine structure of their polysaccharide HS chains plays an important role in cell-cell interactions, adhesion, migration and signalling. The relationship of HS3ST5 on high metastatic samples was established recently in colon tumours [79].
+On the contrary, from the small RNA analysis, we have obtained seven up-regulated and 22 downregulated miRNAs (seven and 24 in Lu’s et al publication). According with the Figure 3a, the highest overexpressed miRNAs are miR-100-5p, miR-125b-1-3p, miR-125b-5p and let-7a-2-3p. At the same time, the most repressed miRNAs are miR-99a-5p, miR-34b-5p, miR-125b-2-3p and the tumour suppressors miR-1, miR-145-5p and miR-143-3p. Figures 3b and 3c represent the variation of expression of the two most over-expressed and repressed miRNAs among our results. All the resulting miRNAs are involved in the development and progression of tumours. In summary, we can mention that miR-100 and miR125, let-7, miR-99a and miR-34b deregulation have already been demonstrated in colon cancer [80-84]. It is important to note that most of the results presented above were obtained by comparing healthy samples with data from patients with colorectal cancer. Therefore, it is surprising to discover that those tumour samples that are resistant to cetuximab have, for the genes and miRNAs shown, levels of expression very similar to those present in normal cells.
+Once the 29 miRNAs and the 368 differentially expressed genes were identified, miARma-Seq performs a statistical integration between these elements. Giving to the total possible number of 10672 correlations, 6287 were statically significant (p-value ≤ 0.05) according to the Pearson correlation method. Among the most overexpressed genes, the positive correlation that appears with several of the most overexpressed microRNAs stands out. In this way, as shown in Table 1, we can see that MIR100HG (gene with extremely high fold change value) has an average positive R coefficient score higher than 0.97 and a p-value < 0.05 for the four most overexpressed microRNAs: miR-100-5p, let-7a-2-3p, miR-125b-5p and miR-125b-1-3p. The explanation of this event is simple since miR100HG is a long non-coding RNA that acts as a host cluster gene. In this way, this RNA functions as a policistron that encodes exactly for the four miRNAs (miR-100-5p, let-7a-2-3p, miR-125b-5p and miR-125b-1-3p) that are overexpressed. In turn, in Table 1 we can also observe another interesting result, the changes of expression of MIR100HG correlate negatively with three of the most repressed microRNAs: miR-99a-5p, miR-125b-2-3p and miR-34b- 5p, which could indicate a possible second-level regulation. To explain these negative correlations of expression based on the possible regulatory interaction carried out by a microRNA on a gene, our tool collects all possible miRNA-mRNA interactions stored in the miRGate database for these genes and miRNAs having an altered expression between resistant and not resistant to the drug samples. All relevant information such as the prediction method, target site, method score and energy among others, is saved in an excel compatible file to be studied in detail.
+Finally, to provide a final result as relevant as possible, miARma-Seq performs an integration analysis between the three available data, that is:  differential expression values, miRNA-mRNA target pairs and statistical correlation. In this way, out tool combines all information a store the relevant results in an excel file. This report contains the miRNA-mRNA connexions formed by differentially expressed genes and miRNAs having a statistically significant correlation in expression levels. As an example, Table 2 shows the results for the five most overexpressed and repressed genes of our data set. It includes in detail, putative miRNAs acting as regulators and the correlation of expression found. In turn, Figure 4 display these results in a graphical manner.
 
-The transcript expression file is a tab separated file where each line provides the estimated abundance of each transcript (in TPM units). This file might contain multiple columns with the expression values in different samples. The expression file must have a header with the naming of the different expression fields, i.e., the sample name of each expression value. 
-
-An example of a transcript expression file for one single sample:
-```
-sample1
-transcript1 <expression>
-transcript1 <expression>
-transcript1 <expression>
-```
-A transcript expression file with multiple samples:
-
-```
-sample1 sample2 sample3 sample4
-transcript1 <expression>  <expression>  <expression>  <expression>
-transcript2 <expression>  <expression>  <expression>  <expression>
-transcript3 <expression>  <expression>  <expression>  <expression>
-```
-
-**Note:** these files have a header with only the sample names (1 less column)
 
 # Conclusions
+The integration of data from different sources helps to improve our knowledge about possible mechanisms that governs underlying relationships arising from the pathophysiology of diseases. These techniques allow the development of new strategies for the early detection and treatment of human diseases. An example of this is the recent article published by the consortium of the cancer genome atlas (TCGA) that has integrated the information of about 11 thousand samples from 33 types of tumours, using up to 4 ‘-omic’ technologies (exome sequencing, miRNA and mRNA transcriptome sequencing and DNA methylation). This combination of data has resulted in a molecular grouping of tumours unknown until now [85].
+The necessary methodology for this data integration includes the management of a large number of programs that makes it difficult to perform this task for users less experienced in computer-based environments. Therefore, it is advisable to create tools useful to minimize the technical challenges to conduct these analyses. In this work we have described the methodological details of the miARma-seq pipeline to combine transcriptome information from mRNA and miRNA regulation. We have also described the statistical underlying framework in the context of previous work dealing with the identification of novel miRNA-mRNA interactions conserved through different cancer tumour types [6]. 
+The purpose of this tool, is to facilitate the extraction of meaningful information regarding relationships of mRNA-miRNA regulation from biological samples. 
