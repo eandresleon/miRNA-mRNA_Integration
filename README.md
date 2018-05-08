@@ -78,7 +78,7 @@ Sequenced reads must be aligned (placed) into the reference genome. As we will s
 
 - mRNA
   
-Besides we will use the [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human HISAT2 indexes will be downloaded following these steps:
+For gene differential expresion analysis, we will use the [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human HISAT2 indexes will be downloaded following these steps:
 
 ```
 cd ~/bin/miARma-Seq.1.7.5
@@ -89,14 +89,14 @@ Once uncompressed, a Genome folder will be created including the whole human gen
 
 - miRNA
   
-Besides we will use the [Bowtie1](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human Bowtie1 indexes will be downloaded following these steps:
+In the case of miRNA study, we will use the [Bowtie1](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human Bowtie1 indexes will be downloaded following these steps:
 
 ```
 cd ~/bin/miARma-Seq.1.7.5
 curl -L -O https://sourceforge.net/projects/miarma/files/Genomes/Index_bowtie1_hg19.tar.bz2
 tar -xjf Index_bowtie1_hg19.tar.bz2
 ```
-Once uncompressed, a Genome folder will be created including the whole human genome in fasta format and its HISAT indexes.
+Once uncompressed, a Genome folder will be created including the whole human genome in fasta format and its Bowtie1 indexes.
 
 ## Organism anottation ##
 
