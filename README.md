@@ -76,7 +76,7 @@ In order to analyse transcriptomic data, we need to download the following infor
 ## Genome Indexes ##
 Sequenced reads must be aligned (placed) into the reference genome. As we will study human samples, miARma-Seq will need to download human genome data. 
 
-* mRNA
+- mRNA
 Besides we will use the [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human HISAT2 indexes will be downloaded following these steps:
 
 ```
@@ -86,7 +86,7 @@ tar -xjf Index_hisat2_hg19.tar.bz2
 ```
 Once uncompressed, a Genome folder will be created including the whole human genome in fasta format and its HISAT indexes.
 
-* miRNA
+- miRNA
 Besides we will use the [Bowtie1](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human Bowtie1 indexes will be downloaded following these steps:
 
 ```
