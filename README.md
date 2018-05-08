@@ -115,11 +115,24 @@ In order to increase our knowledge about these mechanisms, CRC samples from colo
 
 ## Data retrieval
 
-SRA part
+To facilitate the download process, the conversion and the renaming step of samples, we have included a script to perform this processs automatically. Briefly, The six miRNA samples are obtained downloading 6 sra files and converting them into fastq files. The six mRNA files come from 24 sra files. Those files must be downloaded, converted and joined each lane in a fastq file.
+  
+To get all files correctly, please follow the next step:
+
+```
+cd ~/bin/miARma-Seq.1.7.5/reads/
+./Download_reads.sh
+```
+  
+Once you invoke the "Download_reads.sh" script, it checks that the curl binary (included in all Unix system by default) and the fastq-dump utility (from the [sra toolkit](https://www.ncbi.nlm.nih.gov/sra/docs/toolkitsoft/) ) are installed and exported in your $PATH. Once everything is correct, you will see a prompt like the following:
+
+<p align="center">
+  <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure5.png">
+</p>
 
 ## Complete Analysis
 
-Once fastq files are obtained ans saved in a folder, we will perfom the mRNA analysis and the miRNA analysis by miARma-Seq in two different steps. The last part of the second analysis will include the integration analysis:
+Once fastq files are obtained and saved in a their folders, we will perfom the mRNA analysis and the miRNA analysis by miARma-Seq in two different steps. The last part of the second analysis will include the integration analysis:
 
 ### **mRNA**
 -------
