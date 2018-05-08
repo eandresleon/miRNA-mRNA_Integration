@@ -74,7 +74,10 @@ In that way miARma will be installed inside the folder bin in your home director
 
 In order to analyse transcriptomic data, we need to download the following information.
 ## Genome Indexes ##
-Sequenced reads must be aligned (placed) into the reference genome. As we will study human samples, miARma-Seq will need to download human genome data. Besides we will use the [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human HISAT2 indexes will be downloaded following these steps:
+Sequenced reads must be aligned (placed) into the reference genome. As we will study human samples, miARma-Seq will need to download human genome data. 
+
+* mRNA
+Besides we will use the [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human HISAT2 indexes will be downloaded following these steps:
 
 ```
 cd ~/bin/miARma-Seq.1.7.5
@@ -83,7 +86,15 @@ tar -xjf Index_hisat2_hg19.tar.bz2
 ```
 Once uncompressed, a Genome folder will be created including the whole human genome in fasta format and its HISAT indexes.
 
+* miRNA
+Besides we will use the [Bowtie1](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human Bowtie1 indexes will be downloaded following these steps:
 
+```
+cd ~/bin/miARma-Seq.1.7.5
+curl -L -O https://sourceforge.net/projects/miarma/files/Genomes/Index_bowtie1_hg19.tar.bz2
+tar -xjf Index_bowtie1_hg19.tar.bz2
+```
+Once uncompressed, a Genome folder will be created including the whole human genome in fasta format and its HISAT indexes.
 
 ## Organism anottation ##
 
@@ -92,9 +103,7 @@ To perfom this step, miARma-Seq needs to know the position of each genomic featu
 These files can be obtained from this git-hub repository:
 
 ```
-cd ~/bin/miARma-Seq.1.7.5
-mkdir data
-cd data
+cd ~/bin/miARma-Seq.1.7.5/data
 
 curl -L -O https://github.com/eandresleon/miRNA-mRNA_Integration/raw/master/src/data/gencode.v26_GRCh37.annotation.gtf.gz
 gunzip gencode.v26_GRCh37.annotation.gtf.gz
