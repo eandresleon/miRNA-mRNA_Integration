@@ -51,22 +51,22 @@ You can get more information about miARma at its [webpage](https://miarmaseq.com
 
 miARma has been mainly developed in Perl and R. Our tool has been designed to reduce prerequisites to minimun so, in order to run a complete analysis, you just need:
 
-- If you are using an OSX computer, please install Xcode.
+- If you are using an OSX computer, please start by installing Xcode.
 - Java JDK runtime (javac)
 - C compiler (gcc) [Included in Xcode]
 - [R](https://cran.r-project.org)
 - [Bioconductor](https://www.bioconductor.org/install/)
 - miARma-Seq. You can use the version included in this [repository](https://github.com/eandresleon/miRNA-mRNA_Integration/raw/master/src/soft/miARma-Seq.1.7.5.tar.gz) or find the latest version at the [installation webpage](http://miarmaseq.idoproteins.com/installation). There you'll find docker containers, virtualbox images and source code. In this guide we will use the source code as it only implies to uncompress a file.
 
-So, to install miARma-Seq, please download the [source code](https://github.com/eandresleon/miRNA-mRNA_Integration/raw/master/src/soft/miARma-Seq.1.7.5.tar.gz) and uncompress it:
+So, to install miARma-Seq, please download this repo [source code](https://github.com/eandresleon/miRNA-mRNA_Integration/archive/master.zip) and uncompress it:
 
 ```
-mkdir ~/bin/
-mv miARma-Seq.1.7.5.tar.gz ~/bin/
-cd ~/bin/
-tar -xzf miARma-Seq.1.7.5.tar.gz
+cd
+curl -O https://github.com/eandresleon/miRNA-mRNA_Integration/archive/master.zip
+unzip master.zip
+cd ~/src/soft/miARma-Seq.1.7.5
 ```
-In that way miARma will be installed inside the folder bin in your home directory. Finally to perform this example you will need the [sra toolkit](https://www.ncbi.nlm.nih.gov/sra/docs/toolkitsoft/), as fastq samples are provided as sra files.
+In that way you will have miARma installed. Finally to perform this example you will need the [sra toolkit](https://www.ncbi.nlm.nih.gov/sra/docs/toolkitsoft/), as fastq samples are provided as sra files.
 
 ----------------------------
 # Indexes and other needed files
@@ -81,7 +81,7 @@ Sequenced reads must be aligned (placed) into the reference genome. As we will s
 For gene differential expresion analysis, we will use the [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human HISAT2 indexes will be downloaded following these steps:
 
 ```
-cd ~/bin/miARma-Seq.1.7.5
+cd ~/src/soft/miARma-Seq.1.7.5
 curl -L -O https://sourceforge.net/projects/miarma/files/Genomes/Index_hisat2_hg19.tar.bz2
 tar -xjf Index_hisat2_hg19.tar.bz2
 ```
@@ -92,7 +92,7 @@ Once uncompressed, a Genome folder will be created including the whole human gen
 In the case of miRNA study, we will use the [Bowtie1](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human Bowtie1 indexes will be downloaded following these steps:
 
 ```
-cd ~/bin/miARma-Seq.1.7.5
+cd ~/src/soft/miARma-Seq.1.7.5
 curl -L -O https://sourceforge.net/projects/miarma/files/Genomes/Index_bowtie1_hg19.tar.bz2
 tar -xjf Index_bowtie1_hg19.tar.bz2
 ```
@@ -105,7 +105,7 @@ To perfom this step, miARma-Seq needs to know the position of each genomic featu
 These files can be obtained from this git-hub repository:
 
 ```
-cd ~/bin/miARma-Seq.1.7.5/data
+cd ~/src/data/
 
 curl -L -O https://github.com/eandresleon/miRNA-mRNA_Integration/raw/master/src/data/gencode.v26_GRCh37.annotation.gtf.gz
 gunzip gencode.v26_GRCh37.annotation.gtf.gz
@@ -131,7 +131,7 @@ To facilitate the download process, the conversion and the renaming step of samp
 To get all files correctly, please follow the next step:
 
 ```
-cd ~/bin/miARma-Seq.1.7.5/reads/
+cd ~/src/soft/miARma-Seq.1.7.5/reads/
 ./Download_reads.sh
 ```
   
