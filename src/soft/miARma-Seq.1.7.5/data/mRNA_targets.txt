@@ -1,0 +1,7 @@
+Filename	Name	Type
+CC-CR_rep1	CC-CR_rep1	Resistant
+CC-CR_rep2	CC-CR_rep2	Resistant
+CC-CR_rep3	CC-CR_rep3	Resistant
+CC_rep1	CC_rep1	Sensitive
+CC_rep2	CC_rep2	Sensitive
+CC_rep3	CC_rep3	Sensitive

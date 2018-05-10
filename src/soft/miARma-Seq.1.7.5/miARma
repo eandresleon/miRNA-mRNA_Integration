@@ -1,0 +1,95 @@
+#!/usr/bin/perl
+
+#########################################################################	
+#	miARma, miRNA and RNASeq multiprocess Analysis						#
+#																		#
+#	Created at Computational Biology and Bioinformatics Group (CbBio)	#
+#	Institute of Biomedicine of Seville. IBIS (Spain)					#
+#	Modified and Updated at Bioinformatics Unit at IPBLN-CSIC            #
+#   Institue for Parasitology and Biomedicine Lopez-Neyra (IPBLN-CSIC)  # 
+#   Granada (Spain)                   									#
+#   Copyright (c) 2017 IBIS & IPBLN. All rights reserved.              	#
+#	mail : miARma-devel@cbbio.es 										#
+#########################################################################
+
+use strict;
+my $configuration_file;
+my $miARmaPath;
+my $check_input;
+
+sub help{
+	print_header();
+my $usage = qq{
+Usage:\n 
+  perl $0 file.ini [options]
+	
+Options:
+
+ -check   Instead of running the analysis contained in file.ini, it checks that parameters are correct and then quits.
+ -help    Print this help.
+	
+	
+};
+
+			print STDERR $usage;
+			exit(1);	
+}
+
+sub print_header{
+	system("clear");
+	print "#########################################################################	
+#   miARma, miRNA and RNASeq Multiprocess Analysis			#
+#                miARma v 1.7.2 (Dec-2017)                              #
+#               		                              		#
+#   Created at Computational Biology and Bioinformatics Group (CbBio)   #
+#   Institute of Biomedicine of Seville. IBIS (Spain)                   #
+#   Modified and Updated at Bioinformatics Unit at IPBLN-CSIC   	#
+#   Institue for Parasitology and Biomedicine Lopez-Neyra (IPBLN-CSIC). #
+#   Granada (Spain)             				        #
+#   Copyright (c) 2017 IBIS & IPBLN. All rights reserved.               #
+#   mail : miARma-devel\@cbbio.es                                        #
+#########################################################################\n";
+}
+
+BEGIN {
+	
+	#checking input parameter
+	if(@ARGV<1){
+		help();
+	}
+	if($ARGV[0] eq "help" or $ARGV[0] eq "-help" or  $ARGV[0] eq "--help"){
+		help();
+	}
+	# configuration file
+	$configuration_file=$ARGV[0];
+	$check_input=$ARGV[1];
+	my $check=0;
+	
+	# Searching for needed parameters before start
+	open(FILE,$configuration_file) || help();
+	while(<FILE>){
+		chomp;
+		if(lc($_) =~ /miarmapath/){
+			$miARmaPath=$_;
+			$miARmaPath=~s/.+=(.+)/$1/g;
+			$check=1;
+		}
+	}
+	close FILE;
+	if($check ==0){
+		print STDERR "\nSEVERE ERROR :: $configuration_file is incorrect. Please check the parameter miARmaPath under [General] Section\n\n";
+		exit;
+	}
+}
+
+#loading miARma libraries
+use lib "$miARmaPath/lib/";
+use lib "$miARmaPath/lib/Perl";
+use CbBio::RNASeq::miARma;
+run_miARma(
+	config=>$configuration_file,
+	miARmaPath=>$miARmaPath,
+	check=>$check_input,
+)
+
+
