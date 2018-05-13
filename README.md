@@ -168,7 +168,25 @@ Once executed, you will see miARma running and showing the progress of the whole
 ### **miRNA**
 -------
 
-Correspondingly, three CRC-CR and three CRC miRNASeq colon cancer samples were obtained and studied. Single-end sequenced reads were inspected using FastQC. Once this process, reads were pre-processed using Minion to predict (as it was not facilitated by the authors) and to remove the accumulated adapter sequences detected in the previous step. Afterwards, trimmed reads with a size comprised between 18 and 35 nucleotides were aligned using Bowtie1 and quantified using FeatureCounts and the microRNA annotation file from miRBase version 20. miRNAs having a |log2FC|≥1 and a FDR ≤0.01 were considered as differentially expressed. See Figure 3 for more detail.
+Correspondingly, three CRC-CR and three CRC miRNASeq colon cancer samples were obtained and studied. Single-end sequenced reads were inspected using FastQC. Once this process, reads were pre-processed using Minion to predict (as it was not facilitated by the authors) and to remove the accumulated adapter sequences detected in the previous step. Afterwards, trimmed reads with a size comprised between 18 and 35 nucleotides were aligned using Bowtie1 and quantified using FeatureCounts and the microRNA annotation file from miRBase version 20. miRNAs having a |log2FC|≥1 and a FDR ≤0.01 were considered as differentially expressed.
+
+As we did in the previous analysis, we will specify the parameters to perfom these six steps in an ini file, as it is shown in the following picture:
+
+<p align="center">
+  <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure8.png">
+</p>
+
+This file is provided also provided in the [repository](https://raw.githubusercontent.com/eandresleon/miRNA-mRNA_Integration/master/src/soft/miARma-Seq.1.7.5/miARma_miRNASeq.ini) for you to run the analysis and adjust some parametrs to fit your hadrware (threads as an example). To do that, please invoke the following command:
+
+```
+cd ~/miRNA-mRNA_Integration-master/src/soft/miARma-Seq.1.7.5/
+./miARma miARma_miRNASeq.ini
+```
+Once executed, you will see miARma running and showing the progress of the whole pipeline:
+
+<p align="center">
+  <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure9.png">
+</p>
 
 ### **Integration**
 
