@@ -141,13 +141,20 @@ Once you invoke the "Download_reads.sh" script, it checks that the curl binary (
   <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure5.png">
 </p>
 
-## Complete Analysis
+##  Analysis
 
 Once fastq files are obtained and saved in a their folders, we will perfom the mRNA analysis and the miRNA analysis by miARma-Seq in two different steps. The last part of the second analysis will include the integration analysis:
 
 ### **mRNA**
 -------
-Three cetuximab-resistant and three non-resistant colon cancer samples were downloaded from GEO and inspected using FastQC to identify sequencing errors such as bad quality reads or possible accumulation of adapter sequences. Subsequently, sequences were aligned using Hisat2 and those with a quality score above 25 were counted and summarized as expression values for each gene using the GENCODE version 26 annotation file. To obtain those genes with a different expression pattern amongst both types of samples, we use edgeR as it enables the calculation of differential expression values. As it was done by Lu et al, genes having a |log2FC|≥1 and a FDR ≤0.01 were considered as differentially expressed. See Figure 2.
+Three cetuximab-resistant and three non-resistant colon cancer samples were downloaded from GEO and inspected using FastQC to identify sequencing errors such as bad quality reads or possible accumulation of adapter sequences. Subsequently, sequences were aligned using Hisat2 and those with a quality score above 25 were counted and summarized as expression values for each gene using the GENCODE version 26 annotation file. To obtain those genes with a different expression pattern amongst both types of samples, we use edgeR as it enables the calculation of differential expression values. As it was done by Lu et al, genes having a |log2FC|≥1 and a FDR ≤0.01 were considered as differentially expressed. To specify all this information and perform these 4 steps in miARma-Seq, you just need to create a ini file and specify already mentioned parameters, as it is shown in the following picture:
+
+<p align="center">
+  <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure6.png">
+</p>
+
+This file is provided also provided in the [repository](https://raw.githubusercontent.com/eandresleon/miRNA-mRNA_Integration/master/src/soft/miARma-Seq.1.7.5/miARma_mRNASeq.ini) for you to run the analysos. To do that, please onvike the foloowing command:
+
 
 ### **miRNA**
 -------
