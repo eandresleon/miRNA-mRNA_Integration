@@ -1557,7 +1557,7 @@ sub print_header{
 #   Institue for Parasitology and Biomedicine Lopez-Neyra (IPBLN-CSIC). #
 #   Granada (Spain)             				        #
 #   Copyright (c) 2018 IBIS & IPBLN. All rights reserved.               #
-#   mail : miARma-devel\@cbbio.es                                        #
+#   mail : miARma-devel\@idoproteins.com                                 #
 #########################################################################\n\n";
 }
 sub date{
