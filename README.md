@@ -153,8 +153,17 @@ Three cetuximab-resistant and three non-resistant colon cancer samples were down
   <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure6.png">
 </p>
 
-This file is provided also provided in the [repository](https://raw.githubusercontent.com/eandresleon/miRNA-mRNA_Integration/master/src/soft/miARma-Seq.1.7.5/miARma_mRNASeq.ini) for you to run the analysos. To do that, please onvike the foloowing command:
+This file is provided also provided in the [repository](https://raw.githubusercontent.com/eandresleon/miRNA-mRNA_Integration/master/src/soft/miARma-Seq.1.7.5/miARma_mRNASeq.ini) for you to run the analysis and adjust some parametrs to fit your hadrware (threads as an example). To do that, please invoke the following command:
 
+```
+cd ~/miRNA-mRNA_Integration-master/src/soft/miARma-Seq.1.7.5/
+./miARma miARma_mRNASeq.ini
+```
+Once executed, you will see miARma running and showing the progress of the whole pipeline:
+
+<p align="center">
+  <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure7.png">
+</p>
 
 ### **miRNA**
 -------
