@@ -58,7 +58,7 @@ miARma has been mainly developed in Perl and R. Our tool has been designed to re
 - [Bioconductor](https://www.bioconductor.org/install/)
 - miARma-Seq. You can use the version included in this or find the latest version at the [installation webpage](http://miarmaseq.idoproteins.com/installation). There you'll find docker containers, virtualbox images and source code. In this guide we will use the source code as it only implies to uncompress a file.
 
-So, to install miARma-Seq, please download this repo source code and uncompress it:
+So, to install miARma-Seq, please download this repo source code and uncompress it using this steps:
 
 ```
 cd
