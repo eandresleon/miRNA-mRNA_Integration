@@ -56,7 +56,7 @@ miARma has been mainly developed in Perl and R. Our tool has been designed to re
 - C compiler (gcc) [Included in Xcode]
 - [R](https://cran.r-project.org)
 - [Bioconductor](https://www.bioconductor.org/install/)
-- miARma-Seq. You can use the version included in this or find the latest version at the [installation webpage](http://miarmaseq.idoproteins.com/installation). There you'll find docker containers, virtualbox images and source code. In this guide we will use the [source code](https://github.com/eandresleon/miRNA-mRNA_Integration/archive/master.zip) as it only implies to uncompress a file.
+- miARma-Seq. You can use the version included in this or find the latest version at the [installation webpage](http://miarmaseq.idoproteins.com/installation). There you'll find docker containers, virtualbox images and source code. In this guide we will use the source code as it only implies to uncompress a file.
 
 So, to install miARma-Seq, please download this repo source code and uncompress it:
 
