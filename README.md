@@ -56,7 +56,7 @@ miARma has been mainly developed in Perl and R. Our tool has been designed to re
 - C compiler (gcc) [Included in Xcode]
 - [R](https://cran.r-project.org)
 - [Bioconductor](https://www.bioconductor.org/install/)
-- miARma-Seq. You can use the version included in this [repository](https://github.com/eandresleon/miRNA-mRNA_Integration/raw/master/src/soft/miARma-Seq.1.7.5.tar.gz) or find the latest version at the [installation webpage](http://miarmaseq.idoproteins.com/installation). There you'll find docker containers, virtualbox images and source code. In this guide we will use the source code as it only implies to uncompress a file.
+- miARma-Seq. You can use the version included in this or find the latest version at the [installation webpage](http://miarmaseq.idoproteins.com/installation). There you'll find docker containers, virtualbox images and source code. In this guide we will use the [source code](https://github.com/eandresleon/miRNA-mRNA_Integration/archive/master.zip) as it only implies to uncompress a file.
 
 So, to install miARma-Seq, please download this repo [source code](https://github.com/eandresleon/miRNA-mRNA_Integration/archive/master.zip) and uncompress it:
 
@@ -76,7 +76,7 @@ In order to analyse transcriptomic data, we need to download the following infor
 ## Genome Indexes ##
 Sequenced reads must be aligned (placed) into the reference genome. As we will study human samples, miARma-Seq will need to download human genome data. 
 
-- mRNA
+- **mRNA**
   
 For gene differential expresion analysis, we will use the [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human HISAT2 indexes will be downloaded following these steps:
 
@@ -87,7 +87,7 @@ tar -xjf Index_hisat2_hg19.tar.bz2
 ```
 Once uncompressed, a Genome folder will be created including the whole human genome in fasta format and its HISAT indexes.
 
-- miRNA
+- **miRNA**
   
 In the case of miRNA study, we will use the [Bowtie1](https://ccb.jhu.edu/software/hisat2/index.shtml) aligner, so human Bowtie1 indexes will be downloaded following these steps:
 
@@ -115,7 +115,7 @@ curl -L -O https://raw.githubusercontent.com/eandresleon/miRNA-mRNA_Integration/
 
 ## Complete Analysis
 
-At this moment, we have already downloaded all needed software to perform a complete anaylysis. Besides we have obtained the human genome, its HISAT indexes and all human gene and miRNA anottation.
+At this moment, we have already downloaded all needed software to perform a complete anaylysis. Besides we have obtained the human genome, its HISAT and Bowtie1 indexes and all human gene and miRNA anottation.
 So we are ready to perfom the complete study.
 
 ## Summary
@@ -153,7 +153,7 @@ Three cetuximab-resistant and three non-resistant colon cancer samples were down
   <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure6.png">
 </p>
 
-This file is provided also provided in the [repository](https://raw.githubusercontent.com/eandresleon/miRNA-mRNA_Integration/master/src/soft/miARma-Seq.1.7.5/miARma_mRNASeq.ini) for you to run the analysis and adjust some parametrs to fit your hadrware (threads as an example). To do that, please invoke the following command:
+This file is provided also provided in the [repository](https://raw.githubusercontent.com/eandresleon/miRNA-mRNA_Integration/master/src/soft/miARma-Seq.1.7.5/miARma_mRNASeq.ini) for you to run the analysis and adjust some parameters to fit your hardware (threads as an example). To do that, please invoke the following command:
 
 ```
 cd ~/miRNA-mRNA_Integration-master/src/soft/miARma-Seq.1.7.5/
@@ -176,7 +176,7 @@ As we did in the previous analysis, we will specify the parameters to perfom the
   <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure8.png">
 </p>
 
-This file is provided also provided in the [repository](https://raw.githubusercontent.com/eandresleon/miRNA-mRNA_Integration/master/src/soft/miARma-Seq.1.7.5/miARma_miRNASeq.ini) for you to run the analysis and adjust some parametrs to fit your hadrware (threads as an example). To do that, please invoke the following command:
+This file is provided also provided in the [repository](https://raw.githubusercontent.com/eandresleon/miRNA-mRNA_Integration/master/src/soft/miARma-Seq.1.7.5/miARma_miRNASeq.ini) for you to run the analysis and adjust some parameters to fit your hardware (threads as an example). To do that, please invoke the following command:
 
 ```
 cd ~/miRNA-mRNA_Integration-master/src/soft/miARma-Seq.1.7.5/
@@ -190,13 +190,13 @@ Once executed, you will see miARma running and showing the progress of the whole
 
 ### **Integration**
 
-miARma-seq enables to explore miRNA-mRNA interactions using the miRGate query API [34] among genes and miRNAs differentially expressed to identify alterations in regulation patterns linked to phenotype. On the contrary, to include in the analysis all expressed genes and miRNAs, a threshold FDR value equal to 1 can be specified. All those interactions deposited in miRGate and constituted by miRNAs and genes of interest, are retrieved and stored in a file for later analysis. In addition, a statistical correlation study is carried out for the subsequent integration of data. In this way, the correlation (Pearson or Spearman are available) between the expression values ​​of the deregulated genes and the miRNAs is calculated. 
+miARma-seq enables to explore miRNA-mRNA interactions using the [miRGate query API](https://www.ncbi.nlm.nih.gov/pubmed/28439836) among genes and miRNAs differentially expressed to identify alterations in regulation patterns linked to phenotype. All those interactions deposited in miRGate and constituted by miRNAs and genes of interest, are retrieved and stored in a file. In addition, a statistical correlation study is carried out for the subsequent integration of data. In this way, the correlation (Pearson or Spearman are available) between the expression values ​​of the deregulated genes and the miRNAs is calculated. 
 As a final result, we obtain a curated dataset that contains differentially expressed genes and miRNAs with a predicted miRNA-mRNA regulatory interaction and, in addition, formed by two elements that undergo a change of expression level which exhibits an elevated statistical correlation.
 
 
 ## Results
 
-Resistant and non-resistance to cetuximab colon cancer transcriptome samples of both genes and miRNAs were analysed and a total of 368 genes and 29 miRNAs with statistically significant expression alteration were identified. Our results show 165 up-regulated and 203 downregulated genes (|log2FC|≥1 and FDR ≤0.01). In Figure 2a we show the five genes that exhibit the lowest (OLFM1, SERP2, CRABP1, DKK1 and ZNF608) and the five genes presenting the greater fold changes values (MIR100HG, DUSP4, XAF1, BHLHE41 and HS3ST5) while having minimum FDR scores. Figures 2b and 2c illustrate in detail the change of expression of the two most over-expressed and inhibited genes in our dataset. 
+Resistant and non-resistance to cetuximab colon cancer transcriptome samples of both genes and miRNAs were analysed. All results are store in the **output\_dir** that was selected in the ini files. For diferential expressed (DE) genes, please check the folders "miARma\_mRNA\_results/EdgeR\_results/", for miRNAs: "miARma\_miRNA\_results/EdgeR\_results/". In these folders you can find a pdf file with several figures (Figure 2 and 3 included in this webpage are obatined from this file) and a xls file with all diferentially expressed genes/miRNAs. In this xls files you can observe a total of 368 genes and 29 miRNAs with statistically significant expression alteration. Our results show 165 up-regulated and 203 downregulated genes (|log2FC|≥1 and FDR ≤0.01). In Figure 2a we show the five genes that exhibit the lowest (OLFM1, SERP2, CRABP1, DKK1 and ZNF608) and the five genes presenting the greater fold changes values (MIR100HG, DUSP4, XAF1, BHLHE41 and HS3ST5) while having minimum FDR scores. Figures 2b and 2c illustrate in detail the change of expression of the two most over-expressed and inhibited genes in our dataset. 
 
 -------
 <p align="center">
@@ -218,12 +218,23 @@ On the contrary, from the small RNA analysis, we have obtained seven up-regulate
 
 -------
 
-Once the 29 miRNAs and the 368 differentially expressed genes were identified, miARma-Seq performs a statistical integration between these elements. Giving to the total possible number of 10672 correlations, 6287 were statically significant (p-value ≤ 0.05) according to the Pearson correlation method. Among the most overexpressed genes, the positive correlation that appears with several of the most overexpressed microRNAs stands out. 
+Once the 29 miRNAs and the 368 differentially expressed genes were identified, miARma-Seq performs a statistical integration between these elements. According wth the parameter included in the miRNA ini file, all expression values from DE miRNAs will be integrated with DE genes expression values using a Pearson correlatation. All this information is stored under the folder: "miARma\_miRNA\_results/miRGate\_results/". Four diferent file are created:
+-cancer_colon_his_EdgeR_results_Comp_genes_cancer_colon_cut_bw1_EdgeR_results_Comp_miRNAs.xls. This file includes putative miRNA-mRNA interactions predicted by five different miRNA-mRNA target predictions tools: miRanda, Targetscan, RNAHybrid, microtar and Pita.
+-cancer_colon_Integrative_miRNA_mRNA_edgeR_Pearson_correlation.xls. All possible expression correlation.
+-cancer_colon_Integrative_DifferentiallyExpressed_miRNA_mRNA_edgeR_Pearson_correlation.xls. Correlation among diferentially expressed genes and miRNAs expression values.
+-cancer_colon_Integrative_DE_miRNA_mRNA_pairs_statistical_correlation.xls. Correlation among diferentially expressed genes and miRNAs expression values having a P-value< 0.05.
+
+Giving to the total possible number of 10672 correlations (368 * 29), 6287 were statically significant (p-value ≤ 0.05) according to the Pearson correlation method. Among the most overexpressed genes, the positive correlation that appears with several of the most overexpressed microRNAs stands out. 
 In this way, as shown in Table 1, we can see that MIR100HG (gene with extremely high fold change value) has an average positive R coefficient score higher than 0.97 and a p-value < 0.05 for the four most overexpressed microRNAs: miR-100-5p, let-7a-2-3p, miR-125b-5p and miR-125b-1-3p. The explanation of this event is simple since miR100HG is a long non-coding RNA that acts as a host cluster gene. In this way, this RNA functions as a policistron that encodes exactly for the four miRNAs (miR-100-5p, let-7a-2-3p, miR-125b-5p and miR-125b-1-3p) that are overexpressed.
+<p align="center">
+  <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Table1.png">
+</p>
+
+**Table 1.** Pearson's R coefficient values ≥ 0.9 and P-values ≤ 0.05 for the most overexpressed (left) and repressed (right) genes, together with the resulting miRNAs.
 
 In turn, in Table 1 we can also observe another interesting result, the changes of expression of MIR100HG correlate negatively with three of the most repressed microRNAs: miR-99a-5p, miR-125b-2-3p and miR-34b- 5p, which could indicate a possible second-level regulation. To explain these negative correlations of expression based on the possible regulatory interaction carried out by a microRNA on a gene, our tool collects all possible miRNA-mRNA interactions stored in the miRGate database for these genes and miRNAs having an altered expression between resistant and not resistant to the drug samples. All relevant information such as the prediction method, target site, method score and energy among others, is saved in an excel compatible file to be studied in detail.
 
-Finally, to provide a final result as relevant as possible, miARma-Seq performs an integration analysis between the three available data, that is:  differential expression values, miRNA-mRNA target pairs and statistical correlation. In this way, out tool combines all information a store the relevant results in an excel file. This report contains the miRNA-mRNA connexions formed by differentially expressed genes and miRNAs having a statistically significant correlation in expression levels. As an example, Table 2 shows the results for the five most overexpressed and repressed genes of our data set. It includes in detail, putative miRNAs acting as regulators and the correlation of expression found. In turn, Figure 4 display these results in a graphical manner.
+Finally, to provide a final result as relevant as possible, we have used [circos](http://www.circos.ca) to create a figure to summarize the highest relevant results. See Figure 4.
 
 -------
 <p align="center">
@@ -236,5 +247,5 @@ Finally, to provide a final result as relevant as possible, miARma-Seq performs 
 
 # Conclusions
 The integration of data from different sources helps to improve our knowledge about possible mechanisms that governs underlying relationships arising from the pathophysiology of diseases. These techniques allow the development of new strategies for the early detection and treatment of human diseases. An example of this is the recent article published by the consortium of the cancer genome atlas (TCGA) that has integrated the information of about 11 thousand samples from 33 types of tumours, using up to 4 ‘-omic’ technologies (exome sequencing, miRNA and mRNA transcriptome sequencing and DNA methylation). This combination of data has resulted in a molecular grouping of tumours unknown until now [85].
-The necessary methodology for this data integration includes the management of a large number of programs that makes it difficult to perform this task for users less experienced in computer-based environments. Therefore, it is advisable to create tools useful to minimize the technical challenges to conduct these analyses. In this work we have described the methodological details of the miARma-seq pipeline to combine transcriptome information from mRNA and miRNA regulation. We have also described the statistical underlying framework in the context of previous work dealing with the identification of novel miRNA-mRNA interactions conserved through different cancer tumour types [6]. 
+The necessary methodology for this data integration includes the management of a large number of programs that makes it difficult to perform this task for users less experienced in computer-based environments. Therefore, it is advisable to create tools useful to minimize the technical challenges to conduct these analyses. In this work we have described the methodological details of the miARma-seq pipeline to combine transcriptome information from mRNA and miRNA regulation. We have also described the statistical underlying framework in the context of previous work dealing with the identification of novel miRNA-mRNA interactions conserved through different cancer tumour types. 
 The purpose of this tool, is to facilitate the extraction of meaningful information regarding relationships of mRNA-miRNA regulation from biological samples. 
