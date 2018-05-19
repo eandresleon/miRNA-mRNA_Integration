@@ -221,10 +221,10 @@ On the contrary, from the small RNA analysis, we have obtained seven up-regulate
 -------
 
 Once the 29 miRNAs and the 368 differentially expressed genes were identified, miARma-Seq performs a statistical integration between these elements. According wth the parameter included in the miRNA ini file, all expression values from DE miRNAs will be integrated with DE genes expression values using a Pearson correlatation. All this information is stored under the folder: "miARma\_miRNA\_results/miRGate\_results/". Four diferent file are created:
--**- cancer_colon_his_EdgeR_results_Comp_genes_cancer_colon_cut_bw1_EdgeR_results_Comp_miRNAs.xls**. This file includes putative miRNA-mRNA interactions predicted by five different miRNA-mRNA target predictions tools: miRanda, Targetscan, RNAHybrid, microtar and Pita.
--**- cancer_colon_Integrative_miRNA_mRNA_edgeR_Pearson_correlation.xls**. All possible expression correlation.
--**- cancer_colon_Integrative_DifferentiallyExpressed_miRNA_mRNA_edgeR_Pearson_correlation.xls**. Correlation among diferentially expressed genes and miRNAs expression values.
--**- cancer_colon_Integrative_DE_miRNA_mRNA_pairs_statistical_correlation.xls**. Correlation among diferentially expressed genes and miRNAs expression values having a P-value< 0.05.
+-** -cancer_colon_his_EdgeR_results_Comp_genes_cancer_colon_cut_bw1_EdgeR_results_Comp_miRNAs.xls**. This file includes putative miRNA-mRNA interactions predicted by five different miRNA-mRNA target predictions tools: miRanda, Targetscan, RNAHybrid, microtar and Pita.
+-** cancer_colon_Integrative_miRNA_mRNA_edgeR_Pearson_correlation.xls**. All possible expression correlation.
+-** cancer_colon_Integrative_DifferentiallyExpressed_miRNA_mRNA_edgeR_Pearson_correlation.xls**. Correlation among diferentially expressed genes and miRNAs expression values.
+-** cancer_colon_Integrative_DE_miRNA_mRNA_pairs_statistical_correlation.xls**. Correlation among diferentially expressed genes and miRNAs expression values having a P-value< 0.05.
 
 Giving to the total possible number of 10672 correlations (368 * 29), 6287 were statically significant (p-value ≤ 0.05) according to the Pearson correlation method. Among the most overexpressed genes, the positive correlation that appears with several of the most overexpressed microRNAs stands out. 
 In this way, as shown in Table 1, we can see that MIR100HG (gene with extremely high fold change value) has an average positive R coefficient score higher than 0.97 and a p-value < 0.05 for the four most overexpressed microRNAs: miR-100-5p, let-7a-2-3p, miR-125b-5p and miR-125b-1-3p. The explanation of this event is simple since miR100HG is a long non-coding RNA that acts as a host cluster gene. In this way, this RNA functions as a policistron that encodes exactly for the four miRNAs (miR-100-5p, let-7a-2-3p, miR-125b-5p and miR-125b-1-3p) that are overexpressed.
