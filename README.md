@@ -58,7 +58,7 @@ miARma has been mainly developed in Perl and R. Our tool has been designed to re
 - [Bioconductor](https://www.bioconductor.org/install/)
 - miARma-Seq. You can use the version included in this or find the latest version at the [installation webpage](http://miarmaseq.idoproteins.com/installation). There you'll find docker containers, virtualbox images and source code. In this guide we will use the [source code](https://github.com/eandresleon/miRNA-mRNA_Integration/archive/master.zip) as it only implies to uncompress a file.
 
-So, to install miARma-Seq, please download this repo [source code](https://github.com/eandresleon/miRNA-mRNA_Integration/archive/master.zip) and uncompress it:
+So, to install miARma-Seq, please download this repo source code and uncompress it:
 
 ```
 cd
@@ -196,7 +196,9 @@ As a final result, we obtain a curated dataset that contains differentially expr
 
 ## Results
 
-Resistant and non-resistance to cetuximab colon cancer transcriptome samples of both genes and miRNAs were analysed. All results are store in the **output\_dir** that was selected in the ini files. For diferential expressed (DE) genes, please check the folders "miARma\_mRNA\_results/EdgeR\_results/", for miRNAs: "miARma\_miRNA\_results/EdgeR\_results/". In these folders you can find a pdf file with several figures (Figure 2 and 3 included in this webpage are obatined from this file) and a xls file with all diferentially expressed genes/miRNAs. In this xls files you can observe a total of 368 genes and 29 miRNAs with statistically significant expression alteration. Our results show 165 up-regulated and 203 downregulated genes (|log2FC|≥1 and FDR ≤0.01). In Figure 2a we show the five genes that exhibit the lowest (OLFM1, SERP2, CRABP1, DKK1 and ZNF608) and the five genes presenting the greater fold changes values (MIR100HG, DUSP4, XAF1, BHLHE41 and HS3ST5) while having minimum FDR scores. Figures 2b and 2c illustrate in detail the change of expression of the two most over-expressed and inhibited genes in our dataset. 
+Resistant and non-resistance to cetuximab colon cancer transcriptome samples of both genes and miRNAs were analysed. All results are store in the **output\_dir** that was selected in the ini files. For diferential expressed (DE) genes, please check the folders "miARma\_mRNA\_results/EdgeR\_results/", for miRNAs: "miARma\_miRNA\_results/EdgeR\_results/". In these folders you can find a pdf file with several figures (Figure 2 and 3 included in this webpage are obatined from this file) and a xls file with all diferentially expressed genes/miRNAs. In this xls files you can observe a total of 368 genes and 29 miRNAs with statistically significant expression alteration. Our results show 165 up-regulated and 203 downregulated genes (|log2FC|≥1 and FDR ≤0.01). 
+
+In Figure 2a we show the five genes that exhibit the lowest (OLFM1, SERP2, CRABP1, DKK1 and ZNF608) and the five genes presenting the greater fold changes values (MIR100HG, DUSP4, XAF1, BHLHE41 and HS3ST5) while having minimum FDR scores. Figures 2b and 2c illustrate in detail the change of expression of the two most over-expressed and inhibited genes in our dataset. 
 
 -------
 <p align="center">
@@ -214,15 +216,15 @@ On the contrary, from the small RNA analysis, we have obtained seven up-regulate
   <img src="https://github.com/eandresleon/miRNA-mRNA_Integration/blob/master/src/images/Figure3.png">
 </p>
 
-**Fig 3.** . Most overexpressed and repressed miRNAs from resistant (CRC-CR) and non-resistance (CRC) cetuximab samples from colorectal cancer patients. A) Shows a volcano plot including the five most over-expressed (miR-100-5p, miR-125b-1-3p, miR-125b-5p, let-7a-2-3p and miR-4286) and repressed miRNAs (miR-1, miR-99a-5p, miR-125b-2-3p, miR-145-5p and miR-143-3p) including log2FC and its FDR (-log10 FDR). B) Display the difference in expression level among CRC and CRC-RC samples from the two most differentially over-expressed miRNAs: miR-100-5p and miR-125b-1-3p. C) Exhibit the modification in expression level among CRC and CRC-RC samples from the two most differentially inhibited miRNAs: miR-1 and miR-125b-2-3p.
+**Fig 3.** Most overexpressed and repressed miRNAs from resistant (CRC-CR) and non-resistance (CRC) cetuximab samples from colorectal cancer patients. A) Shows a volcano plot including the five most over-expressed (miR-100-5p, miR-125b-1-3p, miR-125b-5p, let-7a-2-3p and miR-4286) and repressed miRNAs (miR-1, miR-99a-5p, miR-125b-2-3p, miR-145-5p and miR-143-3p) including log2FC and its FDR (-log10 FDR). B) Display the difference in expression level among CRC and CRC-RC samples from the two most differentially over-expressed miRNAs: miR-100-5p and miR-125b-1-3p. C) Exhibit the modification in expression level among CRC and CRC-RC samples from the two most differentially inhibited miRNAs: miR-1 and miR-125b-2-3p.
 
 -------
 
 Once the 29 miRNAs and the 368 differentially expressed genes were identified, miARma-Seq performs a statistical integration between these elements. According wth the parameter included in the miRNA ini file, all expression values from DE miRNAs will be integrated with DE genes expression values using a Pearson correlatation. All this information is stored under the folder: "miARma\_miRNA\_results/miRGate\_results/". Four diferent file are created:
--cancer_colon_his_EdgeR_results_Comp_genes_cancer_colon_cut_bw1_EdgeR_results_Comp_miRNAs.xls. This file includes putative miRNA-mRNA interactions predicted by five different miRNA-mRNA target predictions tools: miRanda, Targetscan, RNAHybrid, microtar and Pita.
--cancer_colon_Integrative_miRNA_mRNA_edgeR_Pearson_correlation.xls. All possible expression correlation.
--cancer_colon_Integrative_DifferentiallyExpressed_miRNA_mRNA_edgeR_Pearson_correlation.xls. Correlation among diferentially expressed genes and miRNAs expression values.
--cancer_colon_Integrative_DE_miRNA_mRNA_pairs_statistical_correlation.xls. Correlation among diferentially expressed genes and miRNAs expression values having a P-value< 0.05.
+-**- cancer_colon_his_EdgeR_results_Comp_genes_cancer_colon_cut_bw1_EdgeR_results_Comp_miRNAs.xls**. This file includes putative miRNA-mRNA interactions predicted by five different miRNA-mRNA target predictions tools: miRanda, Targetscan, RNAHybrid, microtar and Pita.
+-**- cancer_colon_Integrative_miRNA_mRNA_edgeR_Pearson_correlation.xls**. All possible expression correlation.
+-**- cancer_colon_Integrative_DifferentiallyExpressed_miRNA_mRNA_edgeR_Pearson_correlation.xls**. Correlation among diferentially expressed genes and miRNAs expression values.
+-**- cancer_colon_Integrative_DE_miRNA_mRNA_pairs_statistical_correlation.xls**. Correlation among diferentially expressed genes and miRNAs expression values having a P-value< 0.05.
 
 Giving to the total possible number of 10672 correlations (368 * 29), 6287 were statically significant (p-value ≤ 0.05) according to the Pearson correlation method. Among the most overexpressed genes, the positive correlation that appears with several of the most overexpressed microRNAs stands out. 
 In this way, as shown in Table 1, we can see that MIR100HG (gene with extremely high fold change value) has an average positive R coefficient score higher than 0.97 and a p-value < 0.05 for the four most overexpressed microRNAs: miR-100-5p, let-7a-2-3p, miR-125b-5p and miR-125b-1-3p. The explanation of this event is simple since miR100HG is a long non-coding RNA that acts as a host cluster gene. In this way, this RNA functions as a policistron that encodes exactly for the four miRNAs (miR-100-5p, let-7a-2-3p, miR-125b-5p and miR-125b-1-3p) that are overexpressed.
