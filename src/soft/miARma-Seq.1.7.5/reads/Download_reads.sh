@@ -22,7 +22,7 @@ checkcurl
 checksra
 
 echo "[`date`] Downloading SRA files (more info at sra_download.log)"
-curl -K fastq_urls.txt >>sra_download.log 2>&1
+curl --retry 3 -K fastq_urls.txt >>sra_download.log 2>&1
 echo "[`date`] All files downloaded, descompressing (more info at sra_descompress.log)"
 for file in `ls *.sra`; do echo "[`date`] descompressing $file"; fastq-dump --split-3 --gzip $file >>sra_descompress.log 2>&1 ; done
 echo "[`date`] Reordering files"
