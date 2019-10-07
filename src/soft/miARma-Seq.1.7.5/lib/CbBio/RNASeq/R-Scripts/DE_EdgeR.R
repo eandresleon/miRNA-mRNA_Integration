@@ -78,13 +78,21 @@ DE_EdgeR<-function(projectdir,dir,file,targetfile,label,contrastfile, filter, cp
 	list.of.packages <- c("ggplot2", "Rcpp","edgeR","NOISeq","gplots","lattice","genefilter","RColorBrewer","ggrepel")
 	new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 	if(length(new.packages)){
-		
-		#install.packages(new.packages)
-		source("http://bioconductor.org/biocLite.R")
-  	  biocLite(new.packages,
-  	           suppressUpdates=T,
-  	           suppressAutoUpdate=T,
-  	           ask=F)
+                
+		if(R.version$minor>5){
+			if (!requireNamespace("BiocManager"))
+			install.packages("BiocManager")
+			BiocManager::install(new.packages,
+			update = F, 
+			ask = F)
+		}
+		else{
+			source("http://bioconductor.org/biocLite.R")
+			biocLite(new.packages,
+		                   suppressUpdates=T,
+		                   suppressAutoUpdate=T,
+						   ask=F)
+		}
 	}
 
   #Loading the needed packagge
@@ -250,7 +258,7 @@ DE_EdgeR<-function(projectdir,dir,file,targetfile,label,contrastfile, filter, cp
         y_rpkm[y_rpkm==0] <- NA
         y_rpkm <- replace(y_rpkm, is.na(y_rpkm), min(na.omit(y_rpkm)))
         
-        plot_barplot(selected_FC,log(y_rpkm))
+        plot_barplot(unique(selected_FC),log(y_rpkm))
         
         #Printing the date and information of the proccess
         time<-Sys.time()
